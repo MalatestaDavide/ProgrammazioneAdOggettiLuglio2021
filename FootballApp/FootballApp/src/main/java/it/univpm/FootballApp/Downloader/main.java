@@ -6,8 +6,8 @@ public class main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		UrlConnection url=new UrlConnection();
-		url.Download(2019, 2018);
+		UrlConnection dow= new UrlConnection();
+		dow.UrlConnection(2019, 2018);
 		
 	}
 

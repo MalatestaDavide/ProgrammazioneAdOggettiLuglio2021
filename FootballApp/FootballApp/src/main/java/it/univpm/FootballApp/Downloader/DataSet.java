@@ -8,7 +8,6 @@ import java.net.UnknownHostException;
 public class DataSet {
 
 	public DataSet() {
-		// TODO Auto-generated constructor stub
 		}	
 	/** Dato un url API restituisce la risposta in una stringa
 	 * @param url
