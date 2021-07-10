@@ -25,29 +25,41 @@ public class Downloader {
 		// TODO Auto-generated constructor stub
 	}
 	
+	
+	int[] squadre=new int[] {2019,2015,2017};
+	
 	//String url = "https://api.dropboxapi.com/2/files/list_folder";
-	        String url = "https://api.dropboxapi.com/2/files/get_metadata";
+	for(int i=0; i<squadre.size; i++) {
+		for(j=2018; j<2021; j++) {
+			String url = "https://api.football-data.org/v2/competitions/"+ squadre[i] +"/matches/?season=2019";
 	        try {
-
-	 
-	            HttpURLConnection openConnection = (HttpURLConnection) new URL(url).openConnection();
+	        	HttpURLConnection openConnection = (HttpURLConnection) new URL(url).openConnection();
 	            openConnection.setRequestMethod("POST");
-	            openConnection.setRequestProperty("Authorization",
-	                    "Bearer -VLBD1Cvt5UAAAAAAAAAAZXMyJ0knLSi8qnXozJyG6dcZ5JsHuifhTCE8ypMd1n_");
+	            openConnection.setRequestProperty("X-Auth-Token",
+	                    "84a8d4919cf94969b065fcebc898e782");
 	            openConnection.setRequestProperty("Content-Type", "application/json");
 	            openConnection.setRequestProperty("Accept", "application/json");
 	            openConnection.setDoOutput(true);
+			
+		}
+		 
+		
+	}
+	        
+
+	 
+	          
 	            /*String jsonBody = "{\r\n" + "    \"path\": \"\",\r\n" + "    \"recursive\": true,\r\n"
 	                    + "    \"include_media_info\": false,\r\n" + "    \"include_deleted\": false,\r\n"
 	                    + "    \"include_has_explicit_shared_members\": false,\r\n"
 	                    + "    \"include_mounted_folders\": true,\r\n" + "    \"include_non_downloadable_files\": true\r\n"
 	                    + "}";*/
-	            String jsonBody = "{\r\n" + 
+	            /*String jsonBody = "{\r\n" + 
 	                    "    \"path\": \"/Photos/Sample Album/img001.jpg\",\r\n" + 
 	                    "    \"include_media_info\": true,\r\n" + 
 	                    "    \"include_deleted\": false,\r\n" + 
 	                    "    \"include_has_explicit_shared_members\": false\r\n" + 
-	                    "}";
+	                    "}"; */
 
 	 
 
@@ -85,6 +97,5 @@ public class Downloader {
 	            e.printStackTrace();
 	        }
 	    }
-	}
+	
 
-}

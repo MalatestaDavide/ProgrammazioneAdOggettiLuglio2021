@@ -4,6 +4,7 @@ public class Nations {
 
 	private int id;
 	private String name;
+	
 	public Nations(int id, String name) {
 		super();
 		this.id = id;
