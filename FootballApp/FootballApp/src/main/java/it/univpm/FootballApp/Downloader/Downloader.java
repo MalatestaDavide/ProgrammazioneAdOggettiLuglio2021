@@ -26,14 +26,14 @@ public class Downloader {
 	}
 	
 	
-	public JSONObject toDownload(int id, int season)
+	public JSONObject toDownload(int id, int season) {
 	
 	//String url = "https://api.dropboxapi.com/2/files/list_folder";
 	
 			String url = "https://api.football-data.org/v2/competitions/"+ id  +"/matches/?season="+ season;
 	        try {
 	        	HttpURLConnection openConnection = (HttpURLConnection) new URL(url).openConnection();
-	            openConnection.setRequestMethod("POST");
+	            openConnection.setRequestMethod("GET");
 	            openConnection.setRequestProperty("X-Auth-Token",
 	                    "84a8d4919cf94969b065fcebc898e782");
 	            openConnection.setRequestProperty("Content-Type", "application/json");
@@ -43,7 +43,7 @@ public class Downloader {
 		}
 		 
 		
-	} 
+	 
 	          
 	            /*String jsonBody = "{\r\n" + "    \"path\": \"\",\r\n" + "    \"recursive\": true,\r\n"
 	                    + "    \"include_media_info\": false,\r\n" + "    \"include_deleted\": false,\r\n"
@@ -59,10 +59,10 @@ public class Downloader {
 
 	 
 
-	            try (OutputStream os = openConnection.getOutputStream()) {
+	         /*   try (OutputStream os = openConnection.getOutputStream()) {
 	                byte[] input = jsonBody.getBytes("utf-8");
 	                os.write(input, 0, input.length);
-	            }
+	            }*/
 
 	 
 
@@ -82,15 +82,13 @@ public class Downloader {
 	                    data += line;
 	                    System.out.println(line);
 	                }
+	                System.out.println(data);
 	            } finally {
 	                in.close();
 	            }
 	            JSONObject obj = (JSONObject) JSONValue.parseWithException(data);
 	            System.out.println("OK");
-	        } catch (IOException | ParseException e) {
-	            e.printStackTrace();
-	        } catch (Exception e) {
-	            e.printStackTrace();
+
 	        }
 	    }
 	
