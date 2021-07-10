@@ -26,12 +26,11 @@ public class Downloader {
 	}
 	
 	
-	int[] squadre=new int[] {2019,2015,2017};
+	public JSONObject toDownload(int id, int season)
 	
 	//String url = "https://api.dropboxapi.com/2/files/list_folder";
-	for(int i=0; i<squadre.size; i++) {
-		for(j=2018; j<2021; j++) {
-			String url = "https://api.football-data.org/v2/competitions/"+ squadre[i] +"/matches/?season=2019";
+	
+			String url = "https://api.football-data.org/v2/competitions/"+ id  +"/matches/?season="+ season;
 	        try {
 	        	HttpURLConnection openConnection = (HttpURLConnection) new URL(url).openConnection();
 	            openConnection.setRequestMethod("POST");
@@ -44,10 +43,7 @@ public class Downloader {
 		}
 		 
 		
-	}
-	        
-
-	 
+	} 
 	          
 	            /*String jsonBody = "{\r\n" + "    \"path\": \"\",\r\n" + "    \"recursive\": true,\r\n"
 	                    + "    \"include_media_info\": false,\r\n" + "    \"include_deleted\": false,\r\n"
