@@ -5,9 +5,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.UnknownHostException;
 
-public class DataSet {
+public class Data {
 
-	public DataSet() {
+	public Data() {
 		}	
 	/** Dato un url API restituisce la risposta in una stringa
 	 * @param url

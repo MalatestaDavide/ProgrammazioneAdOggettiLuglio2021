@@ -1,11 +1,15 @@
 package it.univpm.FootballApp.Model;
 
-public class Nations {
+public class Areas {
+
+	public Areas() {
+		// TODO Auto-generated constructor stub
+	}
 
 	private int id;
 	private String name;
 	
-	public Nations(int id, String name) {
+	public Areas(int id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -23,9 +27,4 @@ public class Nations {
 		this.name = name;
 	}
 	
-	
-	
-	}
-
-
-
+}
