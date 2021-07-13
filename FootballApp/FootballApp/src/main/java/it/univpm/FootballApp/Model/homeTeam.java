@@ -2,14 +2,13 @@ package it.univpm.FootballApp.Model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Areas {
-
+public class homeTeam {
 	@JsonProperty("id")
 	private int id;
-	@JsonProperty("id")
+	@JsonProperty("name")
 	private String name;
 	
-	public Areas(int id, String name) {
+	public homeTeam(int id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -26,7 +25,6 @@ public class Areas {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
 	public String toString() { 
 		String result;
 		result = "id: \t" + this.getId() + "\n" +

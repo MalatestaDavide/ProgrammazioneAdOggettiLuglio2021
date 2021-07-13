@@ -14,6 +14,7 @@ public class DataBase {
 	    	for (int j=2018; j<2021;j++) {
 	    	 try {
 				data.add(Data.download("https://api.football-data.org/v2/competitions/"+ i +"/matches/?season=" + j ));
+				
 			} catch (UnknownHostException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
