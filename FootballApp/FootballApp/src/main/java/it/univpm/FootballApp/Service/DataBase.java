@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import it.univpm.FootballApp.Downloader.*;
 
 public class DataBase {
+	
 	    public static ArrayList<String> buffer() {
 	    	
 	    	ArrayList<String> data = new ArrayList<String>();

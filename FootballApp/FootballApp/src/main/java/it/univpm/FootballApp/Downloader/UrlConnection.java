@@ -18,7 +18,7 @@ public class UrlConnection {
 	/**
 	 * @see HttpURLConnection 
 	 */
-	HttpsURLConnection con;
+	HttpsURLConnection connection;
 	
 	/**
 	 * Costruttore classe
@@ -29,9 +29,9 @@ public class UrlConnection {
 	public UrlConnection(String url) throws IOException {
 		try {
 			URL Url = new URL(url);
-			this.con = (HttpsURLConnection) Url.openConnection();
-			con.setRequestProperty("X-Auth-Token", "84a8d4919cf94969b065fcebc898e782");
-			con.setRequestMethod("GET");
+			this.connection = (HttpsURLConnection) Url.openConnection();
+			connection.setRequestProperty("X-Auth-Token", "84a8d4919cf94969b065fcebc898e782");
+			connection.setRequestMethod("GET");
 		} catch (MalformedURLException e) {
 			System.out.println(e);
 			e.printStackTrace();

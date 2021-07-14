@@ -19,16 +19,16 @@ public class Data {
 		static public String download(String url) throws UnknownHostException, IOException {
 			try {
 				UrlConnection urlc = new UrlConnection(url);
-				BufferedReader in = new BufferedReader(new InputStreamReader(urlc.con.getInputStream()));
-					String line = in.readLine();
+				BufferedReader buffread = new BufferedReader(new InputStreamReader(urlc.connection.getInputStream()));
+					String line = buffread.readLine();
 					String json = "";
 					while (line!=null) {
 						json+=line;
 						json+="\n";
-						line = in.readLine();
+						line = buffread.readLine();
 					}
-				in.close();
-				urlc.con.disconnect();
+				buffread.close();
+				urlc.connection.disconnect();
 				return json;
 			}
 			catch (IOException e) {
