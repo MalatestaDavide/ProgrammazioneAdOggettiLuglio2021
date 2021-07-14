@@ -14,6 +14,9 @@ public class Matches {
 	@JsonProperty("awayTeam")
 	private awayTeam awayTeam;
 	
+	public Matches() {
+		// TODO Auto-generated constructor stub
+	}
 	public Matches(int id, Seasons season, Score score, it.univpm.FootballApp.Model.homeTeam homeTeam,
 			it.univpm.FootballApp.Model.awayTeam awayTeam) {
 		super();

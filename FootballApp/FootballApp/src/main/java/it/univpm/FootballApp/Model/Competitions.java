@@ -17,6 +17,12 @@ public class Competitions {
 	
 	
 	
+	public Competitions() {
+		// TODO Auto-generated constructor stub
+	}
+
+
+
 	public Competitions(int id, String name, Areas area, int numberOfAvailableSeasons, String currentSeason) {
 		super();
 		this.id = id;
