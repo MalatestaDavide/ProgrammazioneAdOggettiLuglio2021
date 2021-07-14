@@ -1,10 +1,15 @@
 package it.univpm.FootballApp.Model;
 
-public class Seasons {
+import com.fasterxml.jackson.annotation.JsonProperty;
 
+public class Seasons {
+	@JsonProperty("id")
 	private int id;
+	@JsonProperty("startDate")
 	private String startDate;
+	@JsonProperty("endDate")
 	private String endDate;
+	@JsonProperty("currentMatchDay")
 	private int currentMatchday;
 	
 	public Seasons(int id, String startDate, String endDate, int currentMatchday) {
@@ -39,7 +44,14 @@ public class Seasons {
 		this.currentMatchday = currentMatchday;
 	}
 	
-	
+	public String toString() { 
+		String result;
+		result = "id: \t" + this.getId() + "\n" +
+				"startDate: \t" + this.getStartDate() + "\n" +
+				"endDate: \t" + this.getEndDate() + "\n" +
+				"currentMatchDay: \t" + this.getCurrentMatchday() + "\n";
+		return result;
+	}		
 	
 	
 	

@@ -23,8 +23,7 @@ public class Data {
 					String line = in.readLine();
 					String json = "";
 					while (line!=null) {
-						json+=line;
-						json+="\n";
+						json+=line; json+="\n";
 						line = in.readLine();
 					}
 				in.close();

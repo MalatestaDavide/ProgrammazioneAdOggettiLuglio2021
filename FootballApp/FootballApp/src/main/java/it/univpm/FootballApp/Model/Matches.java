@@ -1,18 +1,25 @@
 package it.univpm.FootballApp.Model;
 
-public class Matches {
+import com.fasterxml.jackson.annotation.JsonProperty;
 
+public class Matches {
+	@JsonProperty("id")
 	private int id;
+	@JsonProperty("season")
 	private Seasons season;
-	private String winner;
-	private String homeTeam;
-	private String awayTeam;
+	@JsonProperty("score")
+	private Score score;
+	@JsonProperty("homeTeam")
+	private homeTeam homeTeam;
+	@JsonProperty("awayTeam")
+	private awayTeam awayTeam;
 	
-	public Matches(int id, Seasons season, String winner, String homeTeam, String awayTeam) {
+	public Matches(int id, Seasons season, Score score, it.univpm.FootballApp.Model.homeTeam homeTeam,
+			it.univpm.FootballApp.Model.awayTeam awayTeam) {
 		super();
 		this.id = id;
 		this.season = season;
-		this.winner = winner;
+		this.score = score;
 		this.homeTeam = homeTeam;
 		this.awayTeam = awayTeam;
 	}
@@ -28,36 +35,34 @@ public class Matches {
 	public void setSeason(Seasons season) {
 		this.season = season;
 	}
-	public String getWinner() {
-		return winner;
+	public Score getScore() {
+		return score;
 	}
-	public void setWinner(String winner) {
-		this.winner = winner;
+	public void setScore(Score score) {
+		this.score = score;
 	}
-	public String getHomeTeam() {
+	public homeTeam getHomeTeam() {
 		return homeTeam;
 	}
-	public void setHomeTeam(String homeTeam) {
+	public void setHomeTeam(homeTeam homeTeam) {
 		this.homeTeam = homeTeam;
 	}
-	public String getAwayTeam() {
+	public awayTeam getAwayTeam() {
 		return awayTeam;
 	}
-	public void setAwayTeam(String awayTeam) {
+	public void setAwayTeam(awayTeam awayTeam) {
 		this.awayTeam = awayTeam;
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	public String toString() { 
+		String result;
+		result = "id: \t" + this.getId() + "\n" +
+				"season: \t" + this.getSeason() + "\n" +
+				"score: \t" + this.getScore() + "\n" +
+				"homeTeam: \t" + this.getHomeTeam() + "\n" +
+				"awayTeam: \t" + this.getAwayTeam();
+		return result;
+	}		
 }
+	
+	
