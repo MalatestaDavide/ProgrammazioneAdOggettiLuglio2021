@@ -9,76 +9,56 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.*;
 import it.univpm.FootballApp.Model.Areas;
+import it.univpm.FootballApp.Model.Competitions;
+import it.univpm.FootballApp.Model.Matches;
 
 /**
- * Classe che descrive la conversione da Json in ogetto
+ * Class that convert json to object
  * @author Vascello Francesco Pio
  * @author Malatesta Davide
  */
 public class Parsing {
 	/**
-	 * Metodo che a partire dal percorso di un file json ne ritorna un oggetto parsato League
-	 * @param jsonObjPath Directory del file da parsare
-	 * @return newLeague Oggetto parsato
-	 * @throws IOException se accadono errori di I/O
+	 * Method that parse Competitions
+	 * @param jsonObjPath Folder object
+	 * @throws IOException error of IO
 	 */
 	@JsonIgnoreProperties
-	public static Areas parseAreas(String jsonObjPath) throws IOException{
+	public static Competitions parseCompetitions(String jsonObjPath) throws IOException{
 		String jsonObj = File.toString(jsonObjPath);
-		Areas newAreas = new Areas();
+		Competitions newCompetitions = new Competitions();
 		ObjectMapper objectMapper = new ObjectMapper();
 		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 		try {
-			newAreas = objectMapper.readValue(jsonObj, Areas.class);
+			newCompetitions = objectMapper.readValue(jsonObj, Competitions.class);
 		} catch (JsonProcessingException e) {
-			System.out.println("Error while mapping the json file to a League object\n");
+			System.out.println(" Error ");
 			e.printStackTrace();
 		} 
-		return newAreas;
+		return newCompetitions;
 	}
 	
 
 	/**
-	 * Metodo che a partire dal percorso di un file json ne ritorna un oggetto parsato Team
-	 * @param jsonObjPath Directory del file da parsare
-	 * @return newTeam Oggetto parsato
-	 * @throws IOException se accadono errori di I/O
+	 * Method that convert json to object
+	 * @param jsonObjPath Folder object
+	 * @throws IOException error IO
 	 */
 	@JsonIgnoreProperties
-	public static Tea parseTeam(String jsonObjPath) throws IOException{
-		// JSONObject json = new JSONObject(jsonObj);
-		String jsonObj = FileInputOutput.toString(jsonObjPath);
-		Team newTeam = new Team();
+	public static Matches parseMatches(String jsonObjPath) throws IOException{
+		String jsonObj = File.toString(jsonObjPath);
+		Matches newMatches = new Matches();
 		ObjectMapper objectMapper = new ObjectMapper();
 		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 		try {
-			newTeam = objectMapper.readValue(jsonObj, Team.class);
+			newMatches = objectMapper.readValue(jsonObj, Matches.class);
 		} catch (JsonProcessingException e) {
-			System.out.println("Error while mapping the json file to a Team object\n");
+			System.out.println("Error ");
 			e.printStackTrace();
 		}
-		return newTeam;
+		return newMatches;
 	}
 
-	/**
-	 * Metodo che a partire dal percorso di un file json ne ritorna un oggetto parsato Scorers
-	 * @param jsonObjPath Directory del file da parsare
-	 * @return Scorers Oggetto parsato
-	 * @throws IOException se accadono errori di I/O
-	 */
-	@JsonIgnoreProperties
-	public static Scorers parseScorers(String jsonObjPath) throws IOException{
-		String jsonObj = FileInputOutput.toString(jsonObjPath);
-		Scorers scorers = new Scorers();
-		try {
-		ObjectMapper objectMapper = new ObjectMapper();
-		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-		scorers = objectMapper.readValue(jsonObj, Scorers.class);
-		} catch (JsonProcessingException e) {
-			System.out.println("Error while mapping the json file to a Scorers object\n");
-			e.printStackTrace();
-		}
-		return scorers;
-	}
 	
-	}
+	
+}

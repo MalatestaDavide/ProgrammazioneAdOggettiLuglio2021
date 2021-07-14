@@ -19,15 +19,21 @@ public class Data {
 		static public String download(String url) throws UnknownHostException, IOException {
 			try {
 				UrlConnection urlc = new UrlConnection(url);
-				BufferedReader in = new BufferedReader(new InputStreamReader(urlc.con.getInputStream()));
-					String line = in.readLine();
+				BufferedReader buffread = new BufferedReader(new InputStreamReader(urlc.connection.getInputStream()));
+					String line = buffread.readLine();
 					String json = "";
 					while (line!=null) {
+<<<<<<< HEAD
 						json+=line; json+="\n";
 						line = in.readLine();
+=======
+						json+=line;
+						json+="\n";
+						line = buffread.readLine();
+>>>>>>> branch 'main' of https://github.com/MalatestaDavide/ProgrammazioneAdOggettiLuglio2021.git
 					}
-				in.close();
-				urlc.con.disconnect();
+				buffread.close();
+				urlc.connection.disconnect();
 				return json;
 			}
 			catch (IOException e) {

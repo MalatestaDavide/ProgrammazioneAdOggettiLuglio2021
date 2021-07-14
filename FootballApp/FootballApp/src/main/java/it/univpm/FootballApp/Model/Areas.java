@@ -3,7 +3,11 @@ package it.univpm.FootballApp.Model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Areas {
-
+	
+	public Areas() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	@JsonProperty("id")
 	private int id;
 	@JsonProperty("id")
@@ -14,6 +18,7 @@ public class Areas {
 		this.id = id;
 		this.name = name;
 	}
+	
 	public int getId() {
 		return id;
 	}
