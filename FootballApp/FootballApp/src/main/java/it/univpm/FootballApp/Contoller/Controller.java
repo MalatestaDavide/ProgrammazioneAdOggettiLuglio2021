@@ -3,48 +3,47 @@ package it.univpm.FootballApp.Contoller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import java.io.IOException;
+import java.util.List;
+
+import org.springframework.web.bind.annotation.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.core.JsonParser;
 
 import it.univpm.FootballApp.Model.*;
+import it.univpm.FootballApp.Service.*;
 
 import it.univpm.FootballApp.Service.JsonToObj;
 
 
 /**
- * The Contr class is the entry point of the library, it must be instance with your personal token obtained on the football-data.org website. 
- * @author 
+ * The Controller class is the entry point of the library, it must be instance with your personal token obtained on the football-data.org website. 
+ * @author Vascello Francesco Pio
+ * @author Malatesta Davide
  */
 @RestController
 
-public class Contr {
+public class Controller {
 
-	public Contr() {
+	public Controller() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public static String TOKEN;
-	private static final String URI = "https://api.football-data.org/v2/";
-	
-	
-	@SuppressWarnings("static-access")
-	/**
-	 * JfdataManager constructor
-	 * @param Personnal token
-	 */
-	public Contr(String token) {
-		super();
-		this.TOKEN = token;
-	}
-	
-	/**
-	 * Get all competitions
-	 * @return CompetitionListModel who contains list of CompetitionModel
-	 */
 	@RequestMapping(value = "/competitions", method = RequestMethod.GET)
-	public CompetitionsList getAllCompetitions() {
-		Contr contr = new Contr("84a8d4919cf94969b065fcebc898e782");
-		CompetitionsList actual = contr.getAllCompetitions();
-		JsonToObj<CompetitionsList> jsonToObj = new JsonToObj<CompetitionsList>();
-		return jsonToObj.getObjectFromJson(URI + "competitions/", CompetitionsList.class);
+	public Competitions returnCompetitions(@RequestParam(name = "competitions", defaultValue = "" ) String competitions) {
+		Competitions newCompetitions = new Competitions();
+		try {
+			newCompetitions = JsonParser.parseCompetitions(folderCompetition);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		if (Boolean.parseBoolean(competitions)) 
+			{System.out.println(newCompetitions.toString());}	
+		else
+			{ System.out.println(newCompetitions.toString());}
+		
+		return newLeague;
 	}
 	
 	/**
