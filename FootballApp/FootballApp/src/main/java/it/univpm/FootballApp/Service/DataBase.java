@@ -9,6 +9,7 @@ import com.fasterxml.jackson.core.JsonParser;
 
 import it.univpm.FootballApp.Downloader.*;
 import it.univpm.FootballApp.Model.Competitions;
+import it.univpm.FootballApp.Model.Matches;
 
 public class DataBase implements Folder {
 	    public DataBase() {
@@ -17,9 +18,8 @@ public class DataBase implements Folder {
 	    public static Competitions buffer1() throws FileNotFoundException {	    		
 	    	Competitions data = new Competitions();
 	    	for (int i = 2015; i < 2020; i+=2 ) {
-	    		for (int j=2018; j<2021;j++) {
 	    			try {
-	    				String result = Data.download("https://api.football-data.org/v2/competitions/"+ i +"/matches/?season=" + j );
+	    				String result = Data.download("https://api.football-data.org/v2/competitions/"+ i);
 	    				File.file(result, folderCompetitions);
 	    			 data = Parsing.parseCompetitions(folderCompetitions);
 	    				return data;
@@ -34,7 +34,32 @@ public class DataBase implements Folder {
 	    				e.printStackTrace();
 	    			}
 	    		}
+	    
+		return data;
 	    }
+   
+	    public static Matches buffer2() throws FileNotFoundException {	    		
+	    	Matches data1 = new Matches();
+	    	for (int i = 2015; i < 2020; i+=2 ) {
+	    		for (int j=2018; j<2021;j++) {
+	    			try {
+	    				String result = Data.download("https://api.football-data.org/v2/competitions/"+ i +"/matches/?season=" + j);
+	    				File.file(result, folderMatches);
+	    				data1 = Parsing.parseMatches(folderMatches);
+	    			} catch (UnknownHostException e) {
+	    				// TODO Auto-generated catch block
+	    				e.printStackTrace();
+	    			} catch (FileNotFoundException e) {
+	    				// TODO Auto-generated catch block
+	    				e.printStackTrace();
+	    			} catch (IOException e) {
+	    				// TODO Auto-generated catch block
+	    				e.printStackTrace();
+	    			}
+	    		}
+	    
 		return null;
 	    }
-	   }
+			return data1;
+	  }   	
+}    

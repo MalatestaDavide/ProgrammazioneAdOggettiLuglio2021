@@ -8,4 +8,6 @@ public interface Folder {
 	
 		String folderCompetitions = "src/main/resources/file/json/API.json";
 		
+		String folderMatches = "src/main/resources/file/json/APImatch.json";
+		
 }
