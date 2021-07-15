@@ -81,6 +81,8 @@
 
 ### Diagrammi delle Classi <a name="diagrammiclassi"></a>
 
+![ClassDiagram_UML](https://user-images.githubusercontent.com/86164915/125852073-94b8b6e8-e2b8-460a-a9bd-d15730f1e2da.jpg)
+
 ***
 
 ### Diagrammi delle Sequenze <a name="diagrammisequenze"></a>
