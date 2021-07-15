@@ -29,6 +29,10 @@ public class Controller {
 	public Controller() {
 		// TODO Auto-generated constructor stub
 	}
+	/**
+	 * Get all competitions
+	 * @return list of competitions
+	 */
 	
 	@RequestMapping(value = "/competitions", method = RequestMethod.GET)
 	public Competitions returnCompetitions(@RequestParam(name = "competitions", defaultValue = "" ) String competitions) {
@@ -43,7 +47,7 @@ public class Controller {
 		else
 			{ System.out.println(newCompetitions.toString());}
 		
-		return newLeague;
+		return newCompetitions;
 	}
 	
 	/**
@@ -51,10 +55,9 @@ public class Controller {
 	 * @param IdCompetition
 	 * @return Competition object
 	 */
-	public Competitions getCompetition(int id) {
-		JsonToObj<Competitions> jsonToObj = new JsonToObj<Competitions>();
-		return jsonToObj.getObjectFromJson(URI + "competitions/" + id, Competitions.class);
-	}
+	@RequestMapping(value = "/competitions/{id}", method = RequestMethod.GET)
+	public Competitions returnCompetitions(@RequestParam(name = "competitionsId", defaultValue = "" ) String competitions) {
+		Competitions newCompetitions = new Competitions();
 	
 	/**
 	 * Get team
