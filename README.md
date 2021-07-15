@@ -74,6 +74,9 @@
 
 ### Diagramma dei Casi d'Uso <a name="diagrammacasiduso"></a>
 
+![UseCaseDiagram_UML](https://user-images.githubusercontent.com/86164915/125841966-b92a1587-1d78-4269-8643-feca116238e2.jpg)
+
+
 ***
 
 ### Diagrammi delle Classi <a name="diagrammiclassi"></a>
