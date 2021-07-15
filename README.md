@@ -3,7 +3,8 @@
 # Indice
 1. [Introduzione](#introduzione)
 2. [Funzionamento](#funzionamento)
-3. [Richieste](#richieste)
+3. [Package e Classi](#packageeclassi)
+4. [Richieste](#richieste)
     1. [Esempi](#esempi)
 5. [Stats e Filtri ](#statsefiltri)
 6. [Diagrammi UML](#diagrammiuml)
@@ -16,6 +17,7 @@
 # Introduzione <a name="introduzione"></a>
 > La FootBallApp è un'applicazione Java sviluppata in Eclipse che permette di analizzare le competizioni di calcio di 3 nazioni diverse. 
 > Per fare ciò si sono utilizzate le API disponibili dal sito [FootBallApp](https://www.football-data.org.).
+> Scelte le tre nazioni è possibile visualizzare le competizioni, le statistiche relative a tali competizioni e ad una singola competizione. Inoltre, tramite un ID sarà possibile calcolare le statistiche in base a dei filtri scelti.   
 
 ***
 
@@ -27,6 +29,30 @@
 > Affinche il progetto funzioni sono state create delle classi che scaricano tutte le informazioni relative alle competizioni scelte in un file json opportunamente locato ```src/main/resources/file/json/API.json``` e che tramite il parsing traformano il file json in un oggetto java.
 > 
 > L'utilizzo dell'API è possibile grazie ad un token di autenticazione gratuito con il quale abbiamo accesso solo ad una parte dei dati del [sito](https://www.football-data.org/coverage).
+
+***
+
+## Package e Classi <a name="packageeclassi"></a>
+
+| Package     | Classi        |   Utilizzo    |
+| ------------|---------------|---------------|
+| Main        | FootballApp.class     | Classe principale |
+| Controller  | Controller.class    | Gestisce tutte le richieste che l'utente può fare.|
+| Model       | Areas.class           | Contiente le info delle nazioni.|
+|             | awayTeam.class        | Contiene le infro della squadra fuori casa.|
+|             | Competitions.class   | Contiene le info di tutte le competizioni.|
+|             | homeTeam.class    |  Contiene le info della squadra in casa.|
+|             | Matches.class    | Contiene le info delle partite.|
+|             | Score.class      |Contiene le info del vincitore della partita.|
+|             | Seasons.class    |Contiene le info delle stagioni.|
+|             | singleCompetition.class   |Contiene le info di una competizione scelta.|
+|             | Teams.class        | Contiene le info delle squadre.|
+| Service     | DataBase.class    |Ottiene le info dalle API.|
+|             | File.class      |Salva una stringa in un file di testo.|
+|             | Folder.class    |Contiene il percorso del file salvato.|
+|             | Parsing.class   |  Parsing da Json a Object.  |
+| Downloader  | Downloader.class |Effettua il download dei dati in una stringa.|
+|             | Url.class | Gestisce la connessione con l'url API e l'autentificazione con il token.|
 
 ***
 
