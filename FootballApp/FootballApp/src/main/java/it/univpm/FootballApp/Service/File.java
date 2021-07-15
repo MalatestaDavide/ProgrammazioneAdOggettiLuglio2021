@@ -34,13 +34,11 @@ public class File {
 	}
  
 		/**
-
 		* Method for storing a text file in a string
 		* @param fileName folder of the file
 		* @return periodo that contains the file read
 		*/
- 
-	public static String toString(String fileName) {
+ 	public static String toString(String fileName) {
 			BufferedReader reader;
 			String periodo ="{";
 			try {
@@ -61,7 +59,6 @@ public class File {
 		
 		return periodo;
 
-		 
 		}
 	}
 

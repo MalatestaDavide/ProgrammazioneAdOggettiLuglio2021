@@ -2,6 +2,11 @@ package it.univpm.FootballApp.Model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * Class that contains the info of the Areas.
+ * @author Vascello Francesco Pio
+ * @author Malatesta Davide
+ */
 public class Areas {
 	
 	public Areas() {
@@ -19,6 +24,8 @@ public class Areas {
 		this.name = name;
 	}
 	
+	//Get&Set
+	
 	public int getId() {
 		return id;
 	}
@@ -31,6 +38,8 @@ public class Areas {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	//ToString
 	
 	public String toString() { 
 		String result;

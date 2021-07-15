@@ -5,21 +5,25 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.UnknownHostException;
 
-public class Data {
+/**
+ * Class that downloads data to a string
+ * @author Vascello Francesco Pio
+ * @author Malatesta Davide
+ */
+public class Downloader {
 
-	public Data() {
+	public Downloader() {
 		}	
-	/** Dato un url API restituisce la risposta in una stringa
+	/** 
 	 * @param url
 	 * @return json
 	 * @throws UHE
 	 * @throws IO
-	 */
-	
-		static public String download(String url) throws UnknownHostException, IOException {
+	 */	
+	static public String download(String url) throws UnknownHostException, IOException {
 			try {
-				UrlConnection urlc = new UrlConnection(url);
-				BufferedReader buffread = new BufferedReader(new InputStreamReader(urlc.connection.getInputStream()));
+				Url urlcon = new Url(url);
+				BufferedReader buffread = new BufferedReader(new InputStreamReader(urlcon.connection.getInputStream()));
 					String line = buffread.readLine();
 					String json = "";
 					while (line!=null) {
@@ -33,11 +37,11 @@ public class Data {
 
 					}
 				buffread.close();
-				urlc.connection.disconnect();
+				urlcon.connection.disconnect();
 				return json;
 			}
 			catch (IOException e) {
-				System.out.println(" URL INVALID");
+				System.out.println("Invalid Url");
 				e.printStackTrace();
 				return e.toString();
 			}

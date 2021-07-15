@@ -4,29 +4,25 @@ package it.univpm.FootballApp.Downloader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.io.IOException;
-import java.net.HttpURLConnection;
 
 import javax.net.ssl.HttpsURLConnection;
 
-public class UrlConnection {
+/**
+ * Class that manages the connection with the API url and authentication with the token
+ * @author Vascello Francesco Pio
+ * @author Malatesta Davide
+ */
+public class Url {
 	
-	/**
-	 * dove richiedere url
-	 */
 	String url; 
-	
-	/**
-	 * @see HttpURLConnection 
-	 */
 	HttpsURLConnection connection;
 	
 	/**
-	 * Costruttore classe
-	 * @param url Url a cui effettuare la richiesta
+	 * @param url 
 	 * @throws IOException 
 	 */
 
-	public UrlConnection(String url) throws IOException {
+	public Url(String url) throws IOException {
 		try {
 			URL Url = new URL(url);
 			this.connection = (HttpsURLConnection) Url.openConnection();

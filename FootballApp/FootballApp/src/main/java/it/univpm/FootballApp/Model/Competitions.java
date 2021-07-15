@@ -2,6 +2,11 @@ package it.univpm.FootballApp.Model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * Class that contains the info of the all Comptitions.
+ * @author Vascello Francesco Pio
+ * @author Malatesta Davide
+ */
 public class Competitions {
 
 	@JsonProperty("id")
@@ -27,7 +32,8 @@ public class Competitions {
 		this.numberOfAvailableSeason = numberOfAvailableSeason;
 	}
 
-
+//Get&Set
+	
 	public int getId() {
 		return id;
 	}
@@ -62,7 +68,8 @@ public class Competitions {
 		this.area = area;
 	}
 
-
+//ToString
+	
 	public String getNumberOfAvailableSeason() {
 		return numberOfAvailableSeason;
 	}

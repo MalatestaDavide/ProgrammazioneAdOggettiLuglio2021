@@ -2,6 +2,11 @@ package it.univpm.FootballApp.Model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * Class that contains match info.
+ * @author Vascello Francesco Pio
+ * @author Malatesta Davide
+ */
 public class Matches {
 	@JsonProperty("id")
 	private int id;
@@ -26,6 +31,9 @@ public class Matches {
 		this.homeTeam = homeTeam;
 		this.awayTeam = awayTeam;
 	}
+	
+	//Get&Set
+	
 	public int getId() {
 		return id;
 	}
@@ -56,6 +64,8 @@ public class Matches {
 	public void setAwayTeam(awayTeam awayTeam) {
 		this.awayTeam = awayTeam;
 	}
+	
+	//ToString
 	
 	public String toString() { 
 		String result;

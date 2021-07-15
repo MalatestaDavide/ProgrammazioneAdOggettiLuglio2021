@@ -1,7 +1,7 @@
 package it.univpm.FootballApp.Service;
 
 public interface Folder {
-	/**
+	/**Class that contains the path to the saved file.
 	 * @author Vascello Francesco Pio
 	 * @author Malatesta Davide
 	 */

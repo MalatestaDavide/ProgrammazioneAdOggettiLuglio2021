@@ -41,9 +41,9 @@ public class Parsing {
 	
 
 	/**
-	 * Method that convert json to object
+	 * Method that parse Matches
 	 * @param jsonObjPath Folder object
-	 * @throws IOException IO error
+	 * @throws IOException
 	 */
 	@JsonIgnoreProperties
 	public static Matches parseMatches(String jsonObjPath) throws IOException{
@@ -59,7 +59,4 @@ public class Parsing {
 		}
 		return newMatches;
 	}
-
-	
-	
 }

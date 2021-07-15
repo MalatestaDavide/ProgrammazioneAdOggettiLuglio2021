@@ -2,6 +2,12 @@ package it.univpm.FootballApp.Model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * Class that contains info of the seasons.
+ * @author Vascello Francesco Pio
+ * @author Malatesta Davide
+ */
+
 public class Seasons {
 	@JsonProperty("id")
 	private int id;

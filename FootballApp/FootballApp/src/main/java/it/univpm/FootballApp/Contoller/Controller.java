@@ -17,8 +17,6 @@ import it.univpm.FootballApp.Model.*;
 import it.univpm.FootballApp.Service.*;
 import it.univpm.FootballApp.Downloader.*;
 
-import it.univpm.FootballApp.Service.JsonToObj;
-
 
 /**
  * The Controller class is the entry point of the library, it must be instance with your personal token obtained on the football-data.org website. 
@@ -26,7 +24,6 @@ import it.univpm.FootballApp.Service.JsonToObj;
  * @author Malatesta Davide
  */
 @RestController
-
 public class Controller implements Folder {
 
 	public Controller() {
