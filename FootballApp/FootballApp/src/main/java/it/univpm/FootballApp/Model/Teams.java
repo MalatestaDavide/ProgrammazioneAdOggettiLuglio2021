@@ -2,7 +2,7 @@ package it.univpm.FootballApp.Model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Teams {
+public class Teams  {
 	@JsonProperty("id")
 	private int id;
 	@JsonProperty("name")

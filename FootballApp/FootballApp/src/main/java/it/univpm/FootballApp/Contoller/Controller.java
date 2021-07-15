@@ -1,18 +1,21 @@
 package it.univpm.FootballApp.Contoller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+
 import java.io.IOException;
 import java.util.List;
 
-import org.springframework.web.bind.annotation.*;
+import org.springframework.aop.AfterReturningAdvice;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.core.JsonParser;
 
 import it.univpm.FootballApp.Model.*;
 import it.univpm.FootballApp.Service.*;
+import it.univpm.FootballApp.Downloader.*;
 
 import it.univpm.FootballApp.Service.JsonToObj;
 
@@ -24,7 +27,7 @@ import it.univpm.FootballApp.Service.JsonToObj;
  */
 @RestController
 
-public class Controller {
+public class Controller implements Folder {
 
 	public Controller() {
 		// TODO Auto-generated constructor stub
@@ -38,7 +41,7 @@ public class Controller {
 	public Competitions returnCompetitions(@RequestParam(name = "competitions", defaultValue = "" ) String competitions) {
 		Competitions newCompetitions = new Competitions();
 		try {
-			newCompetitions = JsonParser.parseCompetitions(folderCompetition);
+			newCompetitions = Parsing.parseCompetitions(folderCompetitions);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -51,33 +54,16 @@ public class Controller {
 	}
 	
 	/**
-	 * Get Competition by Id
+	 * Get a single competition 
 	 * @param IdCompetition
 	 * @return Competition object
 	 */
-	@RequestMapping(value = "/competitions/{id}", method = RequestMethod.GET)
-	public Competitions returnCompetitions(@RequestParam(name = "competitionsId", defaultValue = "" ) String competitions) {
-		Competitions newCompetitions = new Competitions();
-	
-	/**
-	 * Get team
-	 * @param idTeam
-	 * @return Team object
-	 */
-	public Teams getTeam(int idTeam) {
-		JsonToObj<Teams> utilJson = new JsonToObj<Teams>();
-		return utilJson.getObjectFromJson(URI + "teams/"+ idTeam, Teams.class);
+	@RequestMapping(value = "/singleC", method = RequestMethod.GET)
+	public singleCompetition returnSingleCompetition(@RequestParam(name = "singleC", defaultValue = "" ) String singleC) {
+		singleCompetition newsSingleCompetition = new singleCompetition();
+	return newsSingleCompetition;
 	}
 	
-	/**
-	 * Get matches from a competition
-	 * @param idCompetition
-	 * @return MatchListModel object
-	 */
-	public Matches getMatchesByCompetition(int id ) {
-		JsonToObj<Matches> utilJson = new JsonToObj<Matches>();
-		return utilJson.getObjectFromJson(URI + "competitions/"+ id + "/matches", Matches.class);
-	}
 	
 	
 	

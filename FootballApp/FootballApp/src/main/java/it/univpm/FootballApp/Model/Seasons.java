@@ -11,45 +11,100 @@ public class Seasons {
 	private String endDate;
 	@JsonProperty("currentMatchDay")
 	private int currentMatchday;
+	@JsonProperty("winner")
+	private Score winner;
 	
-	public Seasons(int id, String startDate, String endDate, int currentMatchday) {
+	
+//Constructor
+	
+	public Seasons(int id, String startDate, String endDate, int currentMatchday, Score winner) {
 		super();
 		this.id = id;
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.currentMatchday = currentMatchday;
+		this.winner = winner;
 	}
+
+//Get&Set
+
+
 	public int getId() {
 		return id;
 	}
+
+
+
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
+
+
+
 	public String getStartDate() {
 		return startDate;
 	}
+
+
+
+
 	public void setStartDate(String startDate) {
 		this.startDate = startDate;
 	}
+
+
+
+
 	public String getEndDate() {
 		return endDate;
 	}
+
+
+
+
 	public void setEndDate(String endDate) {
 		this.endDate = endDate;
 	}
+
+
+
+
 	public int getCurrentMatchday() {
 		return currentMatchday;
 	}
+
+
+
+
 	public void setCurrentMatchday(int currentMatchday) {
 		this.currentMatchday = currentMatchday;
 	}
-	
+
+
+
+
+	public Score getWinner() {
+		return winner;
+	}
+
+
+
+
+	public void setWinner(Score winner) {
+		this.winner = winner;
+	}
+
+
+//ToString
+
 	public String toString() { 
 		String result;
 		result = "id: \t" + this.getId() + "\n" +
 				"startDate: \t" + this.getStartDate() + "\n" +
 				"endDate: \t" + this.getEndDate() + "\n" +
-				"currentMatchDay: \t" + this.getCurrentMatchday() + "\n";
+				"winner: \t" + this.getWinner() + "\n";
 		return result;
 	}		
 	

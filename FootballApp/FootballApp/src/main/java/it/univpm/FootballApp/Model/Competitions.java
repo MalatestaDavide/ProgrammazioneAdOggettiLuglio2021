@@ -11,10 +11,7 @@ public class Competitions {
 	@JsonProperty("area")
 	private Areas area;
 	@JsonProperty("numberOfAvailableSeasons")
-	private int numberOfAvailableSeasons;
-	@JsonProperty("currentSeason")
-	private String currentSeason;
-	
+	private String numberOfAvailableSeason;
 	
 	
 	public Competitions() {
@@ -22,16 +19,13 @@ public class Competitions {
 	}
 
 
-
-	public Competitions(int id, String name, Areas area, int numberOfAvailableSeasons, String currentSeason) {
+	public Competitions(int id, String name, Areas area, String numberOfAvailableSeason) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.area = area;
-		this.numberOfAvailableSeasons = numberOfAvailableSeasons;
-		this.currentSeason = currentSeason;
+		this.numberOfAvailableSeason = numberOfAvailableSeason;
 	}
-
 
 
 	public int getId() {
@@ -69,27 +63,14 @@ public class Competitions {
 	}
 
 
-
-	public int getNumberOfAvailableSeasons() {
-		return numberOfAvailableSeasons;
+	public String getNumberOfAvailableSeason() {
+		return numberOfAvailableSeason;
 	}
 
 
 
-	public void setNumberOfAvailableSeasons(int numberOfAvailableSeasons) {
-		this.numberOfAvailableSeasons = numberOfAvailableSeasons;
-	}
-
-
-
-	public String getCurrentSeason() {
-		return currentSeason;
-	}
-
-
-
-	public void setCurrentSeason(String currentSeason) {
-		this.currentSeason = currentSeason;
+	public void setNumberOfAvailableSeason(String numberOfAvailableSeason) {
+		this.numberOfAvailableSeason = numberOfAvailableSeason;
 	}
 
 
@@ -99,9 +80,8 @@ public class Competitions {
 		result = "id: \t" + this.getId() + "\n" +
 				"name: \t" + this.getName() + "\n" +
 				"area: \t" + this.getArea() + "\n" +
-				"currentSeason: \t" + this.getCurrentSeason() + "\n" +
-				"numberOfAvailableSeasons: \t" + this.getNumberOfAvailableSeasons() + "\n";
-		return result;
+				"numberOfAvailableSeasons: \t" + this.getNumberOfAvailableSeason() ;
+				return result;
 	}		
 				
 }

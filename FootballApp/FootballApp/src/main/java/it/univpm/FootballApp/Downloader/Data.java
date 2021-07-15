@@ -23,14 +23,14 @@ public class Data {
 					String line = buffread.readLine();
 					String json = "";
 					while (line!=null) {
-<<<<<<< HEAD
+
 						json+=line; json+="\n";
-						line = in.readLine();
-=======
+						line = buffread.readLine();
+
 						json+=line;
 						json+="\n";
 						line = buffread.readLine();
->>>>>>> branch 'main' of https://github.com/MalatestaDavide/ProgrammazioneAdOggettiLuglio2021.git
+
 					}
 				buffread.close();
 				urlc.connection.disconnect();
