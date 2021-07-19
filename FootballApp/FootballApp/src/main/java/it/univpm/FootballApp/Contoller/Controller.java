@@ -24,7 +24,7 @@ import it.univpm.FootballApp.Downloader.*;
  * @author Malatesta Davide
  */
 @RestController
-public class Controller implements Folder {
+public class Controller  {
 
 	public Controller() {
 		// TODO Auto-generated constructor stub

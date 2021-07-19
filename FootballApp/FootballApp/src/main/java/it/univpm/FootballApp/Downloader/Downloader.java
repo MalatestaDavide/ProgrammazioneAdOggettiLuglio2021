@@ -31,10 +31,6 @@ public class Downloader {
 						json+=line; json+="\n";
 						line = buffread.readLine();
 
-						json+=line;
-						json+="\n";
-						line = buffread.readLine();
-
 					}
 				buffread.close();
 				urlcon.connection.disconnect();

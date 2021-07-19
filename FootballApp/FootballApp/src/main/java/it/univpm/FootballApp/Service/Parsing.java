@@ -26,12 +26,12 @@ public class Parsing {
 	 */
 	@JsonIgnoreProperties
 	public static Competitions parseCompetitions(String jsonObjPath) throws IOException{
-		String jsonObj = File.toString(jsonObjPath);
+		//String jsonObj = File.toString(jsonObjPath);
 		Competitions newCompetitions = new Competitions();
 		ObjectMapper objectMapper = new ObjectMapper();
 		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 		try {
-			newCompetitions = objectMapper.readValue(jsonObj, Competitions.class);
+			newCompetitions = objectMapper.readValue(jsonObjPath, Competitions.class);
 		} catch (JsonProcessingException e) {
 			System.out.println(" Error ");
 			e.printStackTrace();
@@ -47,12 +47,12 @@ public class Parsing {
 	 */
 	@JsonIgnoreProperties
 	public static Matches parseMatches(String jsonObjPath) throws IOException{
-		String jsonObj = File.toString(jsonObjPath);
+		//String jsonObj = File.toString(jsonObjPath);
 		Matches newMatches = new Matches();
 		ObjectMapper objectMapper = new ObjectMapper();
 		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 		try {
-			newMatches = objectMapper.readValue(jsonObj, Matches.class);
+			newMatches = objectMapper.readValue(jsonObjPath, Matches.class);
 		} catch (JsonProcessingException e) {
 			System.out.println("Error ");
 			e.printStackTrace();

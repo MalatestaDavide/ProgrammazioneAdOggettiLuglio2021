@@ -15,7 +15,7 @@ public class Areas {
 	
 	@JsonProperty("id")
 	private int id;
-	@JsonProperty("id")
+	@JsonProperty("name")
 	private String name;
 	
 	public Areas(int id, String name) {
@@ -44,7 +44,7 @@ public class Areas {
 	public String toString() { 
 		String result;
 		result = "id: \t" + this.getId() + "\n" +
-				"name: \t" + this.getName() + "\n";
+				"        name: \t" + this.getName() + "\n";
 		return result;
 	}		
 }

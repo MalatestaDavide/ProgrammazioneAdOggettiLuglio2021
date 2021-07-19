@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Competitions {
 
 	@JsonProperty("id")
-	private int id;
+	private Integer id;
 	@JsonProperty("name")
 	private String name;
 	@JsonProperty("area")
@@ -34,7 +34,7 @@ public class Competitions {
 
 //Get&Set
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
@@ -86,7 +86,7 @@ public class Competitions {
 		String result;
 		result = "id: \t" + this.getId() + "\n" +
 				"name: \t" + this.getName() + "\n" +
-				"area: \t" + this.getArea() + "\n" +
+				"area: [\n \t" + this.getArea() + "        ]\n" +
 				"numberOfAvailableSeasons: \t" + this.getNumberOfAvailableSeason() ;
 				return result;
 	}		
