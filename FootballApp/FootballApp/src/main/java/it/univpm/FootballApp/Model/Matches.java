@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class Matches {
 	@JsonProperty("id")
-	private int id;
+	private Integer id;
 	@JsonProperty("season")
 	private Seasons season;
 	@JsonProperty("score")
@@ -22,7 +22,7 @@ public class Matches {
 	public Matches() {
 		// TODO Auto-generated constructor stub
 	}
-	public Matches(int id, Seasons season, Score score, it.univpm.FootballApp.Model.homeTeam homeTeam,
+	public Matches(Integer id, Seasons season, Score score, it.univpm.FootballApp.Model.homeTeam homeTeam,
 			it.univpm.FootballApp.Model.awayTeam awayTeam) {
 		super();
 		this.id = id;
@@ -34,7 +34,7 @@ public class Matches {
 	
 	//Get&Set
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 	public void setId(int id) {

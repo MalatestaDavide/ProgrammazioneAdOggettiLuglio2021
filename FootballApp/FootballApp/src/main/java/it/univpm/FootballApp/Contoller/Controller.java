@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.List;
 
 import org.springframework.aop.AfterReturningAdvice;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,19 +36,19 @@ public class Controller  {
 	 * @return list of competitions
 	 */
 	
-	@RequestMapping(value = "/competitions", method = RequestMethod.GET)
+	@RequestMapping(value = "/competitions/SA", method = RequestMethod.GET)
 	public Competitions returnCompetitions(@RequestParam(name = "competitions", defaultValue = "" ) String competitions) {
 		Competitions newCompetitions = new Competitions();
-		try {
+		/* try {
 			newCompetitions = Parsing.parseCompetitions(folderCompetitions);
-		} catch (IOException e) {
+		 catch (IOException e) {
 			e.printStackTrace();
 		}
 		if (Boolean.parseBoolean(competitions)) 
 			{System.out.println(newCompetitions.toString());}	
 		else
 			{ System.out.println(newCompetitions.toString());}
-		
+		*/
 		return newCompetitions;
 	}
 	
@@ -60,7 +62,6 @@ public class Controller  {
 		singleCompetition newsSingleCompetition = new singleCompetition();
 	return newsSingleCompetition;
 	}
-	
 	
 	
 	

@@ -1,17 +1,15 @@
-package it.univpm.FootballApp.Service;
+package it.univpm.FootballApp.Downloader;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import java.io.*;
-import it.univpm.FootballApp.Model.Areas;
 import it.univpm.FootballApp.Model.Competitions;
 import it.univpm.FootballApp.Model.Matches;
+import it.univpm.FootballApp.Model.Prova;
 
 /**
  * Class that convert json to object
@@ -26,14 +24,13 @@ public class Parsing {
 	 */
 	@JsonIgnoreProperties
 	public static Competitions parseCompetitions(String jsonObjPath) throws IOException{
-		//String jsonObj = File.toString(jsonObjPath);
 		Competitions newCompetitions = new Competitions();
 		ObjectMapper objectMapper = new ObjectMapper();
 		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 		try {
 			newCompetitions = objectMapper.readValue(jsonObjPath, Competitions.class);
 		} catch (JsonProcessingException e) {
-			System.out.println(" Error ");
+			System.out.println("Error");
 			e.printStackTrace();
 		} 
 		return newCompetitions;
@@ -47,16 +44,29 @@ public class Parsing {
 	 */
 	@JsonIgnoreProperties
 	public static Matches parseMatches(String jsonObjPath) throws IOException{
-		//String jsonObj = File.toString(jsonObjPath);
 		Matches newMatches = new Matches();
 		ObjectMapper objectMapper = new ObjectMapper();
 		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 		try {
 			newMatches = objectMapper.readValue(jsonObjPath, Matches.class);
 		} catch (JsonProcessingException e) {
-			System.out.println("Error ");
+			System.out.println("Error");
 			e.printStackTrace();
 		}
 		return newMatches;
+	}
+	
+	@JsonIgnoreProperties
+	public static Prova parseprova(String jsonObjPath) throws IOException{
+		Prova prova = new Prova();
+		ObjectMapper objectMapper = new ObjectMapper();
+		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+		try {
+			prova = objectMapper.readValue(jsonObjPath, Prova.class);
+		} catch (JsonProcessingException e) {
+			System.out.println("Error");
+			e.printStackTrace();
+		}
+		return prova;
 	}
 }

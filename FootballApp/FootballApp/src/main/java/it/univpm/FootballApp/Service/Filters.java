@@ -1,8 +1,8 @@
 package it.univpm.FootballApp.Service;
 
-public class ArrayCompetitions {
+public class Filters {
 
-	public ArrayCompetitions() {
+	public Filters() {
 		// TODO Auto-generated constructor stub
 	}
 
