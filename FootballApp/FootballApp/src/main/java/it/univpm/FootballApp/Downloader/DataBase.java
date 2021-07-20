@@ -1,12 +1,13 @@
 package it.univpm.FootballApp.Downloader;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 
+import org.springframework.web.servlet.tags.HtmlEscapingAwareTag;
+
 import it.univpm.FootballApp.Model.Competitions;
 import it.univpm.FootballApp.Model.Matches;
-import it.univpm.FootballApp.Model.Prova;
-
 /**
  * Class that gets info from the API.
  * @author Vascello Francesco Pio
@@ -28,7 +29,7 @@ public class DataBase  {
 	    			try {
 	    				String result = Downloader.download("https://api.football-data.org/v2/competitions/2019");
 	    				if(result.isEmpty())
-	    					System.out.println("Error");
+	    					System.out.println("Error1");
 	    				else {
 	    					data = Parsing.parseCompetitions(result);
 						}
@@ -56,7 +57,7 @@ public class DataBase  {
 	    			try {
 	    				String result = Downloader.download("https://api.football-data.org/v2/competitions/2014");
 	    				if(result.isEmpty())
-	    					System.out.println("Error");
+	    					System.out.println("Error2");
 	    				else {
 	    					data = Parsing.parseCompetitions(result);
 						}
@@ -84,7 +85,7 @@ public class DataBase  {
 	    			try {
 	    				String result = Downloader.download("https://api.football-data.org/v2/competitions/2015");
 	    				if(result.isEmpty())
-	    					System.out.println("Error");
+	    					System.out.println("Error3");
 	    				else {
 	    					data = Parsing.parseCompetitions(result);
 						}
@@ -104,13 +105,15 @@ public class DataBase  {
 	    /**
 	     * ArrayList where we go to put the previously downloaded data
 	     */
-	    public void arrayListCompetitions() {
+	    public ArrayList<String> arrayListCompetitions() {
 	  
 	    	ArrayList<String> listCompetitions = new ArrayList<>();
 	    	listCompetitions.add(buffer1().toString()+"\n\n");
 	    	listCompetitions.add(buffer2().toString()+"\n\n");
 	    	listCompetitions.add(buffer3().toString());
 	    	System.out.println(listCompetitions);
+	    	return listCompetitions;
+	    	
 	    }
 	    
 	    /**
@@ -119,13 +122,40 @@ public class DataBase  {
 	     * @throws UnknowHostException
 	     * @throws IOException
 	     */
-	    public Prova buff1() {	    		
+	    	public Matches buff1() {	    		
+	    	Matches data = new Matches();
+	    			try {
+	    				String result = Downloader.download("https://api.football-data.org/v2/competitions/2019/matches");
+	    				if(result.isEmpty())
+	    					System.out.println("Error4");
+	    				else {
+	    				   data = Parsing.parseMatches(result);
+						}
+	    			    	    				 	    				
+	    			} catch (UnknownHostException e) {
+	    				// TODO Auto-generated catch block
+	    				e.printStackTrace();
+	    			} 
+	    			 catch (IOException e) {
+	    				// TODO Auto-generated catch block
+	    				e.printStackTrace();
+	    			}
+	    		
+			return data;
+	    } 
+	    /**
+	     * Method that download all the matches of serie A
+	     * @return matches
+	     * @throws UnknowHostException
+	     * @throws IOException
+	     */
+	   /*  public Prova buff1() {	    		
 	    	Prova prova = new Prova();
 	    			try {
 	    				String result = Downloader.download("https://api.football-data.org/v2/competitions/2019/matches");
 	    				System.out.println(result);
 	    				if(result.isEmpty())
-	    					System.out.println("Error");
+	    					System.out.println("Error4");
 	    				else {
 	    					prova = Parsing.parseprova(result);
 						}
@@ -141,15 +171,17 @@ public class DataBase  {
 	    		
 			return prova;
 	    } 
-	    
+	    */
 	    
 	    
 	    public void arrayListMatches() {
-	  	  
 	    	ArrayList<String> listMatches = new ArrayList<>();
 	    	listMatches.add(buff1().toString());
 	    	System.out.println("\n\n");
 	    	System.out.println(listMatches);
 	    }
+	    
 }
+
+	
 	  

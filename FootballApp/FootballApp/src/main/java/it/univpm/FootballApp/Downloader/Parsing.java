@@ -9,7 +9,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import it.univpm.FootballApp.Model.Competitions;
 import it.univpm.FootballApp.Model.Matches;
-import it.univpm.FootballApp.Model.Prova;
 
 /**
  * Class that convert json to object
@@ -56,8 +55,8 @@ public class Parsing {
 		return newMatches;
 	}
 	
-	@JsonIgnoreProperties
-	public static Prova parseprova(String jsonObjPath) throws IOException{
+	/*@JsonIgnoreProperties
+	 public static Prova parseprova(String jsonObjPath) throws IOException{
 		Prova prova = new Prova();
 		ObjectMapper objectMapper = new ObjectMapper();
 		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
@@ -69,4 +68,6 @@ public class Parsing {
 		}
 		return prova;
 	}
+	*/
 }
+

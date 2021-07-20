@@ -1,4 +1,4 @@
-package it.univpm.FootballApp.Model;
+/* package it.univpm.FootballApp.Model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -7,14 +7,9 @@ public class Prova {
 	@JsonProperty("competitions")
 	private Competitions competitions;
 	@JsonProperty("matches")
-	private Matches matches;
-	public Matches getMacthes() {
-		return matches;
-	}
-
-	public void setMacthes(Matches macthes) {
-		this.matches = macthes;
-	}
+	private ArrayList<Matches> matches;
+	
+	
 
 	public Competitions getCompetitions() {
 		return competitions;
@@ -22,6 +17,14 @@ public class Prova {
 
 	public void setCompetitions(Competitions competitions) {
 		this.competitions = competitions;
+	}
+
+	public Matches getMatches() {
+		return matches;
+	}
+
+	public void setMatches(Matches matches) {
+		this.matches = matches;
 	}
 
 	public Prova(Competitions competitions, Matches matches) {
@@ -32,10 +35,13 @@ public class Prova {
 	public Prova() {
 		
 	}
+	
 	public String toString() { 
-		String string = "";
-		string = this.matches.toString();
-		return string;
+		String result;
+		result = "competitions: \t" + this.getCompetitions() + "\n" +
+				"matches: \t" + this.getMatches();
+				return result;
 	}
 
 }
+*/
