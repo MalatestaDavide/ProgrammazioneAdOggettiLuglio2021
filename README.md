@@ -16,7 +16,7 @@
 
 # Introduzione <a name="introduzione"></a>
 > La FootBallApp è un'applicazione Java sviluppata in Eclipse che permette di analizzare le competizioni di calcio di 3 nazioni diverse. 
-> Per fare ciò si sono utilizzate le API disponibili dal sito [FootBallApp](https://www.football-data.org.).
+> Per fare ciò si sono utilizzate le API disponibili dal sito [//football-data.org](https://www.football-data.org.).
 > Scelte le tre nazioni è possibile visualizzare le competizioni, le statistiche relative a tali competizioni e ad una singola competizione. Inoltre, tramite un ID sarà possibile calcolare le statistiche in base a dei filtri scelti.   
 
 ***
@@ -26,9 +26,11 @@
 > 
 > In seguito basta mandare in run l'applicazione come SpringBootApplication ```run --> Run as --> SpringBootApp``` ed eseguire le richieste di tipo ```GET``` su postman sulla porta predefinita 8080 ```https://localhost:8080/```.
 > 
-> Affinche il progetto funzioni sono state create delle classi che scaricano tutte le informazioni relative alle competizioni scelte in un file json opportunamente locato ```src/main/resources/file/json/API.json``` e che tramite il parsing traformano il file json in un oggetto java.
+> Affinche il progetto funzioni sono state create delle classi che scaricano tutte le informazioni relative alle competizioni scelte in un ArrayList<String> e che tramite il parsing traformano il file json in un oggetto java.
 > 
-> L'utilizzo dell'API è possibile grazie ad un token di autenticazione gratuito con il quale abbiamo accesso solo ad una parte dei dati del [sito](https://www.football-data.org/coverage).
+> L'utilizzo dell'API è possibile grazie ad un token di autenticazione gratuito con il quale abbiamo accesso solo ad una parte dei dati del [sito](https://www.football-data.org/coverage): in particolare di ciascuna nazione sono disponibili solo alcune competizioni ovvero i campionati principali.
+>  
+> In questo caso sono state scelte **Italia, Spagna e Francia** le cui competizioni accessibili sono rispettivamente **Serie A, Primera Division e Ligue 1**.
 
 ***
 
@@ -36,46 +38,98 @@
 
 | Package     | Classi        |   Utilizzo    |
 | ------------|---------------|---------------|
-| Main        | FootballApp.class     | Classe principale |
-| Controller  | Controller.class    | Gestisce tutte le richieste che l'utente può fare.|
-| Model       | Areas.class           | Contiente le info delle nazioni.|
-|             | awayTeam.class        | Contiene le infro della squadra fuori casa.|
-|             | Competitions.class   | Contiene le info di tutte le competizioni.|
-|             | homeTeam.class    |  Contiene le info della squadra in casa.|
-|             | Matches.class    | Contiene le info delle partite.|
-|             | Score.class      |Contiene le info del vincitore della partita.|
-|             | Seasons.class    |Contiene le info delle stagioni.|
-|             | singleCompetition.class   |Contiene le info di una competizione scelta.|
-|             | Teams.class        | Contiene le info delle squadre.|
-| Service     | DataBase.class    |Ottiene le info dalle API.|
-|             | File.class      |Salva una stringa in un file di testo.|
-|             | Folder.class    |Contiene il percorso del file salvato.|
-|             | Parsing.class   |  Parsing da Json a Object.  |
-| Downloader  | Downloader.class |Effettua il download dei dati in una stringa.|
-|             | Url.class | Gestisce la connessione con l'url API e l'autentificazione con il token.|
-
+| Main        | FootballApp.java     | Classe principale |
+| Controller  | Controller.java    | Gestisce tutte le richieste che l'utente può fare.|
+| Model       | Areas.java           | Contiente le info delle nazioni.|
+|             | awayTeam.java        | Contiene le infro della squadra fuori casa.|
+|             | Competitions.java   | Contiene le info di tutte le competizioni.|
+|             | homeTeam.java    |  Contiene le info della squadra in casa.|
+|             | Matches.java    | Contiene le info delle partite.|
+|             | Score.java      |Contiene le info del vincitore della partita.|
+|             | Seasons.java    |Contiene le info delle stagioni.|
+|             | singleCompetition.java   |Contiene le info di una competizione scelta.|
+|             | Teams.java        | Contiene le info delle squadre.|
+| Service     | Stats.java    |Contiene le statistiche sulle competizioni.|
+|             | Filters.java  | Contiene i filtri richiesti.|
+| Downloader  | Downloader.java |Effettua il download dei dati in una stringa.|
+|             | Url.java     | Gestisce la connessione con l'url API e l'autentificazione con il token.|
+|             | DataBase.java    |Ottiene le info dalle API.|        
+|             | Parsing.java   |  Parsing da Json a Object.  |
+| Exceptions  | MissingCompetition.java |Gestisce l'inserimento errato di una competizione.|
+|             | MissingSeason.java |Gestisce l'inserimento errato di una stagione.|
 ***
 
 ## Richieste <a name="richieste"></a>
-
+| Tipo         | Rotte         | Descrizione   |
+| ------------ |---------------|---------------|
+|    ```GET``` | /competitions | Questa richiesta mi restituisce i dettagli delle 3 competizioni scelte |
+|              |               |               |
 ***
 
 ### Esempi <a name="esempi"></a>
+Un esempio di richiesta è il seguente : ```https://localhost:8080/competitions```
+```
+{id: 	2019
+name: 	Serie A
+area: [
+ 	id: 	2114
+        name: 	Italy
+       ]
+season: [
+ 	id: 	757
+        startDate: 	2021-08-22
+        endDate: 	2022-05-22
+       ]
 
+
+, id: 	2014
+name: 	Primera Division
+area: [
+ 	id: 	2224
+        name: 	Spain
+       ]
+season: [
+ 	id: 	380
+        startDate: 	2021-08-13
+        endDate: 	2022-05-22
+       ]
+
+
+, id: 	2015
+name: 	Ligue 1
+area: [
+ 	id: 	2081
+        name: 	France
+       ]
+season: [
+ 	id: 	746
+        startDate: 	2021-08-08
+        endDate: 	2022-05-22
+       ]
+}
+```
+    
 ***
 
 ## Stats e Filtri <a name="statsefiltri"></a>
-
+| Tipo         | Statistiche   | Descrizione   |
+| ------------ |---------------|---------------|
+|  ```GET```   |               |               |
+|              |               |               |
+  
+| Tipo         | Filtri        | Descrizione   |
+| ------------ |---------------|---------------|
+|  ```GET```   |               |               |
+|              |               |               |
+    
+    
 ***
 
 ## Diagrammi UML <a name="diagrammiuml"></a>
 
-***
-
 ### Diagramma dei Casi d'Uso <a name="diagrammacasiduso"></a>
 
 ![UseCaseDiagram_UML](https://user-images.githubusercontent.com/86164915/125841966-b92a1587-1d78-4269-8643-feca116238e2.jpg)
-
 
 ***
 
@@ -97,6 +151,7 @@
 > * [UMLDesigner](http://www.umldesigner.org/): Version v9.0.0- App per generare i diagrammi UML.
 > * [Maven](https://maven.apache.org/): Version v3.8.1 - Strumento di build per la gestione di progetti Java.
 > * [JavaDoc](https://docs.oracle.com/javase/8/docs/technotes/tools/windows/javadoc.html): - Strumento che genera una documentazione automatica utilizzando tag specifici nel codice.
+> * [JUnit 5](https://junit.org/junit5/): Version v5.7.2 - Framework open source usato per scrivere ed eseguire unit testing per Java.
 
 ***
 
