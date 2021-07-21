@@ -62,51 +62,58 @@
 ## Richieste <a name="richieste"></a>
 | Tipo         | Rotte         | Descrizione   |
 | ------------ |---------------|---------------|
-|    ```GET``` | /competitions | Questa richiesta mi restituisce i dettagli delle 3 competizioni scelte |
-|              |               |               |
+|   ```GET```  | /competitions | Questa richiesta mi restituisce i dettagli delle 3 competizioni scelte.|
+|   ```GET```  | /competitions/{id}|Ponendo al posto di id SA, PD o L1, ottengo i dettagli di 1 singola competizione.|
+|   ```GET```  | /matches/{id}|Ponendo al posto di id SA, PD o L1, ottengo le partite di 1 singola competizione.|
 ***
 
 ### Esempi <a name="esempi"></a>
 Un esempio di richiesta è il seguente : ```https://localhost:8080/competitions```
 ```
-{id: 	2019
-name: 	Serie A
-area: [
- 	id: 	2114
-        name: 	Italy
-       ]
-season: [
- 	id: 	757
-        startDate: 	2021-08-22
-        endDate: 	2022-05-22
-       ]
-
-
-, id: 	2014
-name: 	Primera Division
-area: [
- 	id: 	2224
-        name: 	Spain
-       ]
-season: [
- 	id: 	380
-        startDate: 	2021-08-13
-        endDate: 	2022-05-22
-       ]
-
-
-, id: 	2015
-name: 	Ligue 1
-area: [
- 	id: 	2081
-        name: 	France
-       ]
-season: [
- 	id: 	746
-        startDate: 	2021-08-08
-        endDate: 	2022-05-22
-       ]
-}
+[
+    {
+        "id": 2019,
+        "name": "Serie A",
+        "area": {
+            "id": 2114,
+            "name": "Italy"
+        },
+        "currentSeason": {
+            "id": 757,
+            "startDate": "2021-08-22",
+            "endDate": "2022-05-22",
+            "currentMatchDay": 0
+        }
+    },
+    {
+        "id": 2014,
+        "name": "Primera Division",
+        "area": {
+            "id": 2224,
+            "name": "Spain"
+        },
+        "currentSeason": {
+            "id": 380,
+            "startDate": "2021-08-13",
+            "endDate": "2022-05-22",
+            "currentMatchDay": 0
+        }
+    },
+    {
+        "id": 2015,
+        "name": "Ligue 1",
+        "area": {
+            "id": 2081,
+            "name": "France"
+        },
+        "currentSeason": {
+            "id": 746,
+            "startDate": "2021-08-08",
+            "endDate": "2022-05-22",
+            "currentMatchDay": 0
+        }
+    }
+]
 ```
     
 ***
