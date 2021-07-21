@@ -1,5 +1,7 @@
 package it.univpm.FootballApp.Model;
 
+import static org.hamcrest.CoreMatchers.nullValue;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -17,14 +19,13 @@ public class Competitions {
 	private Areas area;
 	@JsonProperty("currentSeason")
 	private currentSeason currentSeason;
-	
-	
+
+
 	public Competitions() {
 		// TODO Auto-generated constructor stub
 	}
 
-
-public Competitions(Integer id, String name, Areas area, it.univpm.FootballApp.Model.currentSeason currentSeason) {
+	public Competitions(Integer id, String name, Areas area, it.univpm.FootballApp.Model.currentSeason currentSeason) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -32,64 +33,39 @@ public Competitions(Integer id, String name, Areas area, it.univpm.FootballApp.M
 		this.currentSeason = currentSeason;
 	}
 
-
-
-
 //Get&Set
 
 	public Integer getId() {
 		return id;
 	}
 
-
-
-
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
-
-
 
 	public String getName() {
 		return name;
 	}
 
-
-
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
-
-
 
 	public Areas getArea() {
 		return area;
 	}
 
-
-
-
 	public void setArea(Areas area) {
 		this.area = area;
 	}
-
-
-
 
 	public currentSeason getCurrentSeason() {
 		return currentSeason;
 	}
 
-
-
-
 	public void setCurrentSeason(currentSeason currentSeason) {
 		this.currentSeason = currentSeason;
-	}		
-	
+	}
 
 	//ToString
 	
@@ -101,5 +77,4 @@ public Competitions(Integer id, String name, Areas area, it.univpm.FootballApp.M
 				"season: [\n \t" + this.getCurrentSeason() + "       ]\n" ;
 				return result;
 	}
-			
 }

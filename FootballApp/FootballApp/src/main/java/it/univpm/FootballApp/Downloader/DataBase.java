@@ -143,12 +143,17 @@ public class DataBase  {
 	    		
 			return data;
 	    } 
-	    /**
-	     * Method that download all the matches of serie A
-	     * @return matches
-	     * @throws UnknowHostException
-	     * @throws IOException
-	     */
+	    	
+	    	 public void arrayListMatches() {
+	 	    	ArrayList<String> listMatches = new ArrayList<>();
+	 	    	listMatches.add(buff1().toString());
+	 	    	System.out.println("\n\n");
+	 	    	System.out.println(listMatches);
+	 	    }
+	    	 
+	    	 
+	    	 
+	   
 	   /*  public Prova buff1() {	    		
 	    	Prova prova = new Prova();
 	    			try {
@@ -172,14 +177,6 @@ public class DataBase  {
 			return prova;
 	    } 
 	    */
-	    
-	    
-	    public void arrayListMatches() {
-	    	ArrayList<String> listMatches = new ArrayList<>();
-	    	listMatches.add(buff1().toString());
-	    	System.out.println("\n\n");
-	    	System.out.println(listMatches);
-	    }
 	    
 }
 

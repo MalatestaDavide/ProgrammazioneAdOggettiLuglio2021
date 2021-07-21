@@ -43,16 +43,16 @@ public class Parsing {
 	 */
 	@JsonIgnoreProperties
 	public static Matches parseMatches(String jsonObjPath) throws IOException{
-		Matches newMatches = new Matches();
+		Matches matches= new Matches();
 		ObjectMapper objectMapper = new ObjectMapper();
 		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 		try {
-			newMatches = objectMapper.readValue(jsonObjPath, Matches.class);
+			matches = objectMapper.readValue(jsonObjPath, Matches.class);
 		} catch (JsonProcessingException e) {
 			System.out.println("Error");
 			e.printStackTrace();
 		}
-		return newMatches;
+		return matches;
 	}
 	
 	/*@JsonIgnoreProperties

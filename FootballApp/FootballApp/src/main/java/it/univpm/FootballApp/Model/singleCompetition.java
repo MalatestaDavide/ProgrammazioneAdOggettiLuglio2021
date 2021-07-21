@@ -15,26 +15,29 @@ public class singleCompetition extends Competitions {
 	}
 	
 	@JsonProperty("competition")
-	private Competitions competition;
+	private Competitions[] competition;
 	@JsonProperty("season")
 	private Seasons season;
+	
 
 	
 	//Get&Set
 	
-	public Competitions getCompetition() {
+	public Competitions[] getCompetition() {
 		return competition;
 	}
 
 
-	public void setCompetition(Competitions competition) {
+	public void setCompetition(Competitions[] competition) {
 		this.competition = competition;
 	}
+
 
 
 	public Seasons getSeason() {
 		return season;
 	}
+
 
 
 	public void setSeason(Seasons season) {
@@ -49,5 +52,12 @@ public class singleCompetition extends Competitions {
 				"season: \t" + this.getSeason() ;
 		return result;
 	}
-
+	
+	
+	public int Id(String name) {
+		for(Competitions c : competition) {
+			if(c.getName().equals(name)) return c.getId();
+		}
+		return -1;
+}
 }
