@@ -1,10 +1,9 @@
 package it.univpm.FootballApp.Downloader;
-import java.io.FileOutputStream;
+
 import java.io.IOException;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 
-import org.springframework.web.servlet.tags.HtmlEscapingAwareTag;
 
 import it.univpm.FootballApp.Model.Competitions;
 import it.univpm.FootballApp.Model.Matches;
@@ -27,9 +26,9 @@ public class DataBase  {
 	    public Competitions buffer1() {	    		
 	    	Competitions data = new Competitions();
 	    			try {
-	    				String result = Downloader.download("https://api.football-data.org/v2/competitions/2019");
+	    				String result = Downloader.download("https://api.football-data.org/v2/competitions/SA");
 	    				if(result.isEmpty())
-	    					System.out.println("Error1");
+	    					System.out.println("Error");
 	    				else {
 	    					data = Parsing.parseCompetitions(result);
 						}
@@ -55,9 +54,9 @@ public class DataBase  {
 	    public Competitions buffer2() {	    		
 	    	Competitions data = new Competitions();
 	    			try {
-	    				String result = Downloader.download("https://api.football-data.org/v2/competitions/2014");
+	    				String result = Downloader.download("https://api.football-data.org/v2/competitions/PD");
 	    				if(result.isEmpty())
-	    					System.out.println("Error2");
+	    					System.out.println("Error");
 	    				else {
 	    					data = Parsing.parseCompetitions(result);
 						}
@@ -83,9 +82,9 @@ public class DataBase  {
 	    public Competitions buffer3() {	    		
 	    	Competitions data = new Competitions();
 	    			try {
-	    				String result = Downloader.download("https://api.football-data.org/v2/competitions/2015");
+	    				String result = Downloader.download("https://api.football-data.org/v2/competitions/FL1");
 	    				if(result.isEmpty())
-	    					System.out.println("Error3");
+	    					System.out.println("Error");
 	    				else {
 	    					data = Parsing.parseCompetitions(result);
 						}
@@ -104,17 +103,41 @@ public class DataBase  {
 	    
 	    /**
 	     * ArrayList where we go to put the previously downloaded data
+	     * @return List of competitions
 	     */
-	    public ArrayList<String> arrayListCompetitions() {
+	    public ArrayList<Competitions> arrayListCompetitions() {
 	  
-	    	ArrayList<String> listCompetitions = new ArrayList<>();
-	    	listCompetitions.add(buffer1().toString()+"\n\n");
-	    	listCompetitions.add(buffer2().toString()+"\n\n");
-	    	listCompetitions.add(buffer3().toString());
-	    	System.out.println(listCompetitions);
+	    	ArrayList<Competitions> listCompetitions = new ArrayList<>();
+	    	listCompetitions.add(buffer1());
+	    	listCompetitions.add(buffer2());
+	    	listCompetitions.add(buffer3());
+	    	//System.out.println(listCompetitions);
 	    	return listCompetitions;
 	    	
 	    }
+	    
+	    public ArrayList<Competitions> competitionsSA() {
+
+	    	   ArrayList<Competitions> listCompetitions = new ArrayList<>();
+	    	   listCompetitions.add(buffer1());
+	    	   return listCompetitions;
+
+	    	}
+	    
+	    public ArrayList<Competitions> competitionsPD() {
+
+	    	   ArrayList<Competitions> listCompetitions = new ArrayList<>();
+	    	   listCompetitions.add(buffer2());
+	    	   return listCompetitions;
+
+	    	}
+	    
+	    public ArrayList<Competitions> competitionsL1() {
+
+	    	   ArrayList<Competitions> listCompetitions = new ArrayList<>();
+	    	   listCompetitions.add(buffer3());
+	    	   return listCompetitions;
+	    	}
 	    
 	    /**
 	     * Method that download all the matches of serie A
@@ -122,62 +145,107 @@ public class DataBase  {
 	     * @throws UnknowHostException
 	     * @throws IOException
 	     */
-	    	public Matches buff1() {	    		
-	    	Matches data = new Matches();
-	    			try {
-	    				String result = Downloader.download("https://api.football-data.org/v2/competitions/2019/matches");
-	    				if(result.isEmpty())
-	    					System.out.println("Error4");
-	    				else {
-	    				   data = Parsing.parseMatches(result);
-						}
-	    			    	    				 	    				
-	    			} catch (UnknownHostException e) {
-	    				// TODO Auto-generated catch block
-	    				e.printStackTrace();
-	    			} 
-	    			 catch (IOException e) {
-	    				// TODO Auto-generated catch block
-	    				e.printStackTrace();
-	    			}
-	    		
-			return data;
-	    } 
+	    	public Matches[] buff1() {
+	    	   Matches[] data = new Matches[0];
+	    	         try {
+	    	            String result = Downloader.download("https://api.football-data.org/v2/competitions/SA/matches");
+	    	            if(result.isEmpty())
+	    	               System.out.println("Error");
+	    	            else {
+	    	               data = new Matches[Parsing.parseMatches(result).length];
+	    	               data = Parsing.parseMatches(result);
+	    	               System.out.println(data);
+	    	         }
+	    	                                                   
+	    	         } catch (UnknownHostException e) {
+	    	            // TODO Auto-generated catch block
+	    	            e.printStackTrace();
+	    	         } 
+	    	          catch (IOException e) {
+	    	            // TODO Auto-generated catch block
+	    	            e.printStackTrace();
+	    	         }
+	    	      
+	    	return data;
+	    	} 
 	    	
-	    	 public void arrayListMatches() {
-	 	    	ArrayList<String> listMatches = new ArrayList<>();
-	 	    	listMatches.add(buff1().toString());
-	 	    	System.out.println("\n\n");
-	 	    	System.out.println(listMatches);
-	 	    }
-	    	 
-	    	 
-	    	 
-	   
-	   /*  public Prova buff1() {	    		
-	    	Prova prova = new Prova();
-	    			try {
-	    				String result = Downloader.download("https://api.football-data.org/v2/competitions/2019/matches");
-	    				System.out.println(result);
-	    				if(result.isEmpty())
-	    					System.out.println("Error4");
-	    				else {
-	    					prova = Parsing.parseprova(result);
-						}
-	    			    	    				 	    				
-	    			} catch (UnknownHostException e) {
-	    				// TODO Auto-generated catch block
-	    				e.printStackTrace();
-	    			} 
-	    			 catch (IOException e) {
-	    				// TODO Auto-generated catch block
-	    				e.printStackTrace();
-	    			}
-	    		
-			return prova;
-	    } 
-	    */
-	    
+	    	public Matches[] buff2() {
+		    	   Matches[] data = new Matches[0];
+		    	         try {
+		    	            String result = Downloader.download("https://api.football-data.org/v2/competitions/PD/matches");
+		    	            if(result.isEmpty())
+		    	               System.out.println("Error");
+		    	            else {
+		    	               data = new Matches[Parsing.parseMatches(result).length];
+		    	               data = Parsing.parseMatches(result);
+		    	               System.out.println(data);
+		    	         }
+		    	                                                   
+		    	         } catch (UnknownHostException e) {
+		    	            // TODO Auto-generated catch block
+		    	            e.printStackTrace();
+		    	         } 
+		    	          catch (IOException e) {
+		    	            // TODO Auto-generated catch block
+		    	            e.printStackTrace();
+		    	         }
+		    	      
+		    	return data;
+		    	}
+	    	
+	    	public Matches[] buff3() {
+		    	   Matches[] data = new Matches[0];
+		    	         try {
+		    	            String result = Downloader.download("https://api.football-data.org/v2/competitions/FL1/matches");
+		    	            if(result.isEmpty())
+		    	               System.out.println("Error");
+		    	            else {
+		    	               data = new Matches[Parsing.parseMatches(result).length];
+		    	               data = Parsing.parseMatches(result);
+		    	               System.out.println(data);
+		    	         }
+		    	                                                   
+		    	         } catch (UnknownHostException e) {
+		    	            // TODO Auto-generated catch block
+		    	            e.printStackTrace();
+		    	         } 
+		    	          catch (IOException e) {
+		    	            // TODO Auto-generated catch block
+		    	            e.printStackTrace();
+		    	         }
+		    	      
+		    	return data;
+		    	}
+	    	
+	    	public ArrayList<Matches> matchesSA() {
+		    	ArrayList<Matches> listMatches = new ArrayList<>();
+		    	Matches[] data = new Matches[0];
+		    	data = buff1();
+		    	   for (int i = 0; i < data.length; i++) {
+		    		   listMatches.add(data[i]);
+		    	   }
+		    	   	return listMatches;
+		    	 }
+	    	
+	    	public ArrayList<Matches> matchesPD() {
+		    	ArrayList<Matches> listMatches = new ArrayList<>();
+		    	Matches[] data = new Matches[0];
+		    	data = buff2();
+		    	   for (int i = 0; i < data.length; i++) {
+		    		   listMatches.add(data[i]);
+		    	   }
+		    	   	return listMatches;
+		    	 }
+	    	
+	    	public ArrayList<Matches> matchesL1() {
+		    	ArrayList<Matches> listMatches = new ArrayList<>();
+		    	Matches[] data = new Matches[0];
+		    	data = buff3();
+		    	   for (int i = 0; i < data.length; i++) {
+		    		   listMatches.add(data[i]);
+		    	   }
+		    	   	return listMatches;
+		    	 }
 }
 
 	

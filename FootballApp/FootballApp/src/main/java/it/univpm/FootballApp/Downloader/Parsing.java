@@ -6,6 +6,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 import it.univpm.FootballApp.Model.Competitions;
 import it.univpm.FootballApp.Model.Matches;
@@ -41,33 +44,12 @@ public class Parsing {
 	 * @param jsonObjPath Folder object
 	 * @throws IOException
 	 */
-	@JsonIgnoreProperties
-	public static Matches parseMatches(String jsonObjPath) throws IOException{
-		Matches matches= new Matches();
-		ObjectMapper objectMapper = new ObjectMapper();
-		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-		try {
-			matches = objectMapper.readValue(jsonObjPath, Matches.class);
-		} catch (JsonProcessingException e) {
-			System.out.println("Error");
-			e.printStackTrace();
+	public static Matches[] parseMatches(String jsonObjPath) throws IOException{
+		   JsonObject myObject = new Gson().fromJson(jsonObjPath, JsonObject.class);
+		   JsonArray array = myObject.getAsJsonArray("matches");
+		   Gson GoogleSon = new Gson();
+		   Matches[] gsonArray = GoogleSon.fromJson(array, Matches[].class);
+		   return gsonArray;
 		}
-		return matches;
-	}
-	
-	/*@JsonIgnoreProperties
-	 public static Prova parseprova(String jsonObjPath) throws IOException{
-		Prova prova = new Prova();
-		ObjectMapper objectMapper = new ObjectMapper();
-		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-		try {
-			prova = objectMapper.readValue(jsonObjPath, Prova.class);
-		} catch (JsonProcessingException e) {
-			System.out.println("Error");
-			e.printStackTrace();
-		}
-		return prova;
-	}
-	*/
 }
 

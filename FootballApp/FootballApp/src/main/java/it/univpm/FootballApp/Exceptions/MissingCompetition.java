@@ -1,4 +1,4 @@
-package Exceptions;
+package it.univpm.FootballApp.Exceptions;
 
 import java.io.IOException;
 
