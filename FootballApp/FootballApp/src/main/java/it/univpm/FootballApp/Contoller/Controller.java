@@ -63,6 +63,13 @@ public class Controller  {
 	   return new ResponseEntity<Object>(data.competitionsPD(), HttpStatus.OK);
 	}
 	
+	@RequestMapping(value = "/matchesSA2018", method = RequestMethod.GET)
+	@ResponseBody
+	public ResponseEntity<Object> getmatchesSA2018() throws IOException {
+	   DataBase data = new DataBase();
+	   return new ResponseEntity<Object>(data.matchesSA(), HttpStatus.OK);
+	}
+	
 	/**
 	 * Get number of teams of all Competitions.
 	 * @param numberOfTeams
@@ -81,6 +88,16 @@ public class Controller  {
 	 @ResponseBody
 	  public ResponseEntity<Object> getSavedSeasons() throws IOException {
 	     return new ResponseEntity<Object>(Stats.savedSeasons(), HttpStatus.OK);
+	 } 
+	 
+	 /**
+	  * Get saved Seasons for all Competitions.
+	  * @param savedSeasons
+	  */
+	 @RequestMapping(value = "/duration", method = RequestMethod.GET)
+	 @ResponseBody
+	  public ResponseEntity<Object> getduration() throws IOException {
+	     return new ResponseEntity<Object>(Stats.duration(), HttpStatus.OK);
 	 } 
 }
 

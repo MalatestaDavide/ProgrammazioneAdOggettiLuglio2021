@@ -1,12 +1,14 @@
 package it.univpm.FootballApp.Service;
 
+import java.time.Period;
 import java.util.HashMap;
+
+import it.univpm.FootballApp.Model.currentSeason;
 
 /**
  * Class that manages all the statistics we need.
  * @author Vascello Francesco Pio
  * @author Malatesta Davide
- *
  */
 public class Stats {
 
@@ -15,7 +17,7 @@ public class Stats {
 	}
 	/**
 	 * Hashmap that return the minimum, maximum and average number of total teams.
-	 * @return maxTeams, minTeams and avgTeams
+	 * @return statMap
 	 */
 	public static HashMap<String, Integer> numberOfTeams() {
 		int avgTeams;
@@ -62,7 +64,7 @@ public class Stats {
 	
 	/**
 	 * Hashmap that return the saved seasons.
-	 * @return maxTeams, minTeams and avgTeams
+	 * @return statMap
 	 */
 	public static HashMap<String, Integer> savedSeasons() {
         int seasonsSA = 3;
@@ -75,6 +77,24 @@ public class Stats {
     statMap.put("Stagioni salvate per la Primera Division", seasonsPD);   
     statMap.put("Stagioni salvate per la Ligue 1", seasonsL1);
     statMap.put("Media di stagioni salvate per competizione", avgSeasons);
+    return statMap;
+    }
+	
+	/**
+	 * Hashmap that returns the average duration of seasons.
+	 * @return statMap
+	 */
+	public static HashMap<String, Period> duration() {
+        currentSeason dur = new currentSeason();
+        Period periodSA = dur.getTimeSA();
+        Period periodPD = dur.getTimePD();
+        Period periodL1 = dur.getTimeL1();
+        
+   
+    HashMap<String, Period> statMap = new HashMap<String, Period>();
+    statMap.put("Durata della Serie A in mesi e giorni", periodSA );
+    statMap.put("Durata della Primera division in mesi e giorni", periodPD );
+    statMap.put("Durata della Legue1 in mesi e giorni", periodL1 );
     return statMap;
     }
 }
