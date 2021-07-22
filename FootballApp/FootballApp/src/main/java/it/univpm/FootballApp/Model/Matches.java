@@ -19,22 +19,25 @@ public class Matches {
 	@JsonProperty("awayTeam")
 	private awayTeam awayTeam;
 	
+	private nameTeams nameTeams;
+	
+	
 	 public Matches() {
 		// TODO Auto-generated constructor stub
 	} 
 	 
-	public Matches(Integer id, Seasons season, Score score, it.univpm.FootballApp.Model.homeTeam homeTeam,
-			it.univpm.FootballApp.Model.awayTeam awayTeam) {
-		super();
-		this.id = id;
-		this.season = season;
-		this.score = score;
-		this.homeTeam = homeTeam;
-		this.awayTeam = awayTeam;
-	} 
-	
+	 public Matches(Integer id, Seasons season, Score score, it.univpm.FootballApp.Model.homeTeam homeTeam,
+				it.univpm.FootballApp.Model.awayTeam awayTeam, it.univpm.FootballApp.Model.nameTeams nameTeams) {
+			super();
+			this.id = id;
+			this.season = season;
+			this.score = score;
+			this.homeTeam = homeTeam;
+			this.awayTeam = awayTeam;
+			this.nameTeams = nameTeams;
+		}
+	 
 	//Get&Set
-	
 	public Integer getId() {
 		return id;
 	}
@@ -66,6 +69,14 @@ public class Matches {
 		this.awayTeam = awayTeam;
 	}
 	
+	public nameTeams getNameTeams() {
+		return nameTeams;
+	}
+
+	public void setNameTeams(nameTeams nameTeams) {
+		this.nameTeams = nameTeams;
+	}	
+
 	//ToString
 	
 	public String toString() { 
@@ -76,7 +87,10 @@ public class Matches {
 				"homeTeam: \t" + this.getHomeTeam() + "\n" +
 				"awayTeam: \t" + this.getAwayTeam();
 		return result;
-	}		
+	}
+	
+	
+	
 }
 	
 	
