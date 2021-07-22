@@ -59,5 +59,6 @@ public class currentSeason {
 				"        startDate: \t" + this.getStartDate() + "\n" +
 				"        endDate: \t" + this.getEndDate() + "\n";
 		return result;
-	}		
+	}
+	
 }

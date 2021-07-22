@@ -17,10 +17,10 @@ public class Stats {
 	 * Hashmap that return the minimum, maximum and average number of total teams.
 	 * @return maxTeams, minTeams and avgTeams
 	 */
-	public static HashMap<String, Integer> stats() {
-		int avgTeams = 0;
-		int minTeams = 0;
-		int maxTeams = 0;
+	public static HashMap<String, Integer> numberOfTeams() {
+		int avgTeams;
+		int minTeams;
+		int maxTeams;
 		int teamsSA = 20;
 		int teamsPD = 20;
 		int teamsL1 = 20;
@@ -59,4 +59,22 @@ public class Stats {
 	statMap.put("Numero medio di squadre", avgTeams);
 	return statMap;
 	}
+	
+	/**
+	 * Hashmap that return the saved seasons.
+	 * @return maxTeams, minTeams and avgTeams
+	 */
+	public static HashMap<String, Integer> savedSeasons() {
+        int seasonsSA = 3;
+        int seasonsPD = 3;
+        int seasonsL1 = 3;
+        int avgSeasons = (seasonsSA + seasonsPD + seasonsL1)/3;
+   
+    HashMap<String, Integer> statMap = new HashMap<String, Integer>();
+    statMap.put("Stagioni salvate per la Serie A", seasonsSA);
+    statMap.put("Stagioni salvate per la Primera Division", seasonsPD);   
+    statMap.put("Stagioni salvate per la Ligue 1", seasonsL1);
+    statMap.put("Media di stagioni salvate per competizione", avgSeasons);
+    return statMap;
+    }
 }

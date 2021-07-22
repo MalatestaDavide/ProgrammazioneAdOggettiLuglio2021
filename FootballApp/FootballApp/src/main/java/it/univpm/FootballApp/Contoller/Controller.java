@@ -2,8 +2,6 @@ package it.univpm.FootballApp.Contoller;
 
 
 import java.io.IOException;
-import java.util.HashMap;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import it.univpm.FootballApp.Downloader.*;
-import it.univpm.FootballApp.Model.Teams;
 import it.univpm.FootballApp.Service.Stats;
 
 
@@ -67,36 +64,24 @@ public class Controller  {
 	}
 	
 	/**
-	 * Get matches of a single competition 
-	 * @param IdCompetition
-	 * @return Competition object
+	 * Get number of teams of all Competitions.
+	 * @param numberOfTeams
 	 */
-	@RequestMapping(value = "/matches/SA", method = RequestMethod.GET)
-	@ResponseBody
-	public ResponseEntity<Object> getMatchesSA() throws IOException {
-	   DataBase data = new DataBase();
-	   return new ResponseEntity<Object>(data.matchesSA(), HttpStatus.OK);
+	 @RequestMapping(value = "/numberOfTeams", method = RequestMethod.GET)
+	 @ResponseBody
+	  public ResponseEntity<Object> getnumberOfTeams() throws IOException {
+	     return new ResponseEntity<Object>(Stats.numberOfTeams(), HttpStatus.OK);
 	 }
 	 
-	 @RequestMapping(value = "/matches/PD", method = RequestMethod.GET)
+	 /**
+	  * Get saved Seasons for all Competitions.
+	  * @param savedSeasons
+	  */
+	 @RequestMapping(value = "/savedSeasons", method = RequestMethod.GET)
 	 @ResponseBody
-	  public ResponseEntity<Object> getMatchesPD() throws IOException {
-	     DataBase data = new DataBase();
-	     return new ResponseEntity<Object>(data.matchesPD(), HttpStatus.OK);
-	 }
-	 
-	 @RequestMapping(value = "/matches/L1", method = RequestMethod.GET)
-	 @ResponseBody
-	  public ResponseEntity<Object> getMatchesL1() throws IOException {
-	     DataBase data = new DataBase();
-	     return new ResponseEntity<Object>(data.matchesL1(), HttpStatus.OK);
-	 }
-	 
-	 @RequestMapping(value = "/matches/stats", method = RequestMethod.GET)
-	 @ResponseBody
-	  public ResponseEntity<Object> getStats() throws IOException {
-	     return new ResponseEntity<Object>(Stats.stats(), HttpStatus.OK);
-	 }
+	  public ResponseEntity<Object> getSavedSeasons() throws IOException {
+	     return new ResponseEntity<Object>(Stats.savedSeasons(), HttpStatus.OK);
+	 } 
 }
 
 	
