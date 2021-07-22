@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import it.univpm.FootballApp.Model.Teams;
+
 @SpringBootApplication
 public class FootballAppApplication {
 

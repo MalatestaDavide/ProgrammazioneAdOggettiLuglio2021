@@ -19,6 +19,7 @@ public class Competitions {
 	private Areas area;
 	@JsonProperty("currentSeason")
 	private currentSeason currentSeason;
+	
 
 
 	public Competitions() {

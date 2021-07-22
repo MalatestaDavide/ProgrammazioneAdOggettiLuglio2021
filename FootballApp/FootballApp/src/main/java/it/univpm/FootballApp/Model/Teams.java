@@ -45,7 +45,5 @@ public class Teams  {
 		result = "id: \t" + this.getId() + "\n" +
 				"name: \t" + this.getName() + "\n";
 		return result;
-	}		
-	
-
+	}
 }

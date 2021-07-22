@@ -2,6 +2,7 @@ package it.univpm.FootballApp.Contoller;
 
 
 import java.io.IOException;
+import java.util.HashMap;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import it.univpm.FootballApp.Downloader.*;
+import it.univpm.FootballApp.Model.Teams;
+import it.univpm.FootballApp.Service.Stats;
 
 
 /**
@@ -87,6 +90,12 @@ public class Controller  {
 	  public ResponseEntity<Object> getMatchesL1() throws IOException {
 	     DataBase data = new DataBase();
 	     return new ResponseEntity<Object>(data.matchesL1(), HttpStatus.OK);
+	 }
+	 
+	 @RequestMapping(value = "/matches/stats", method = RequestMethod.GET)
+	 @ResponseBody
+	  public ResponseEntity<Object> getStats() throws IOException {
+	     return new ResponseEntity<Object>(Stats.stats(), HttpStatus.OK);
 	 }
 }
 
