@@ -3,7 +3,7 @@ package it.univpm.FootballApp.Service;
 import java.time.Period;
 import java.util.HashMap;
 
-import it.univpm.FootballApp.Model.currentSeason;
+import java.time.LocalDate;
 
 /**
  * Class that manages all the statistics we need.
@@ -81,20 +81,44 @@ public class Stats {
     }
 	
 	/**
+	 * These functions calculate the duration in months and days of each competition of the 2020 season
+	 * @return duration
+	 */
+	public Period getTimeSA() {
+		LocalDate startDateSA = LocalDate.of(2020,9,20);
+		LocalDate endDateSA = LocalDate.of(2021, 5, 23);
+		Period periodSA = Period.between(startDateSA, endDateSA);
+		return periodSA;	
+	}
+	
+	public Period getTimePD() {
+		LocalDate startDatePD = LocalDate.of(2020,9,13);
+		LocalDate endDatePD = LocalDate.of(2021, 5, 23);
+		Period periodPD = Period.between(startDatePD, endDatePD);	
+		return periodPD;
+	}
+	
+	public Period getTimeL1() {
+		LocalDate startDateL1 = LocalDate.of(2020,8,22);
+		LocalDate endDateL1 = LocalDate.of(2021, 5, 23);
+		Period periodL1 = Period.between(startDateL1, endDateL1);
+		return periodL1;
+	}
+	
+	/**
 	 * Hashmap that returns the average duration of seasons.
 	 * @return statMap
 	 */
 	public static HashMap<String, Period> duration() {
-        currentSeason dur = new currentSeason();
+		Stats dur = new Stats();
         Period periodSA = dur.getTimeSA();
         Period periodPD = dur.getTimePD();
         Period periodL1 = dur.getTimeL1();
-        
    
     HashMap<String, Period> statMap = new HashMap<String, Period>();
     statMap.put("Durata della Serie A in mesi e giorni", periodSA );
     statMap.put("Durata della Primera division in mesi e giorni", periodPD );
-    statMap.put("Durata della Legue1 in mesi e giorni", periodL1 );
+    statMap.put("Durata della Legue 1 in mesi e giorni", periodL1 );
     return statMap;
     }
 }

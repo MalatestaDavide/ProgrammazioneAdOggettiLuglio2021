@@ -111,7 +111,6 @@ public class DataBase  {
 	    	listCompetitions.add(buffer1());
 	    	listCompetitions.add(buffer2());
 	    	listCompetitions.add(buffer3());
-	    	//System.out.println(listCompetitions);
 	    	return listCompetitions;
 	    	
 	    }
@@ -120,6 +119,7 @@ public class DataBase  {
 
 	    	   ArrayList<Competitions> listCompetitions = new ArrayList<>();
 	    	   listCompetitions.add(buffer1());
+	    	 //System.out.println(listCompetitions);
 	    	   return listCompetitions;
 
 	    	}
@@ -154,9 +154,7 @@ public class DataBase  {
 	    	            else {
 	    	               data = new Matches[Parsing.parseMatches(result).length];
 	    	               data = Parsing.parseMatches(result);
-	    	               System.out.println(data);
 	    	            	}
-	    	         
 	    	         }
 	    	    catch (UnknownHostException e) {
    	            // TODO Auto-generated catch block
@@ -178,9 +176,7 @@ public class DataBase  {
 		    	            else {
 		    	               data = new Matches[Parsing.parseMatches(result).length];
 		    	               data = Parsing.parseMatches(result);
-		    	               System.out.println(data);
-		    	            	}
-		    	         
+		    	               } 
 		    	         }
 		    	    catch (UnknownHostException e) {
 	   	            // TODO Auto-generated catch block
@@ -203,9 +199,7 @@ public class DataBase  {
 		    	            else {
 		    	               data = new Matches[Parsing.parseMatches(result).length];
 		    	               data = Parsing.parseMatches(result);
-		    	               System.out.println(data);
 		    	            	}
-		    	         
 		    	         }
 		    	    catch (UnknownHostException e) {
 	   	            // TODO Auto-generated catch block
@@ -218,8 +212,6 @@ public class DataBase  {
 
 				return data;
 		    }   
-	    	
-	    	
 	    	
 	    	public ArrayList<Matches> matchesSA() {
 		    	ArrayList<Matches> listMatches = new ArrayList<>();

@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @author Malatesta Davide
  */
 public class Matches {
+	
 	@JsonProperty("id")
 	private Integer id;
 	@JsonProperty("season")
@@ -17,68 +18,64 @@ public class Matches {
 	@JsonProperty("homeTeam")
 	private homeTeam homeTeam;
 	@JsonProperty("awayTeam")
-	private awayTeam awayTeam;
-	
-	private nameTeams nameTeams;
-	
+	private awayTeam awayTeam;	
 	
 	 public Matches() {
 		// TODO Auto-generated constructor stub
 	} 
 	 
 	 public Matches(Integer id, Seasons season, Score score, it.univpm.FootballApp.Model.homeTeam homeTeam,
-				it.univpm.FootballApp.Model.awayTeam awayTeam, it.univpm.FootballApp.Model.nameTeams nameTeams) {
+				it.univpm.FootballApp.Model.awayTeam awayTeam) {
 			super();
 			this.id = id;
 			this.season = season;
 			this.score = score;
 			this.homeTeam = homeTeam;
 			this.awayTeam = awayTeam;
-			this.nameTeams = nameTeams;
 		}
 	 
 	//Get&Set
 	public Integer getId() {
 		return id;
 	}
+	
 	public void setId(int id) {
 		this.id = id;
 	}
+	
 	public Seasons getSeason() {
 		return season;
 	}
+	
 	public void setSeason(Seasons season) {
 		this.season = season;
 	}
+	
 	public Score getScore() {
 		return score;
 	}
+	
 	public void setScore(Score score) {
 		this.score = score;
 	}
+	
 	public homeTeam getHomeTeam() {
 		return homeTeam;
 	}
+	
 	public void setHomeTeam(homeTeam homeTeam) {
 		this.homeTeam = homeTeam;
 	}
+	
 	public awayTeam getAwayTeam() {
 		return awayTeam;
 	}
+	
 	public void setAwayTeam(awayTeam awayTeam) {
 		this.awayTeam = awayTeam;
 	}
 	
-	public nameTeams getNameTeams() {
-		return nameTeams;
-	}
-
-	public void setNameTeams(nameTeams nameTeams) {
-		this.nameTeams = nameTeams;
-	}	
-
 	//ToString
-	
 	public String toString() { 
 		String result;
 		result = "id: \t" + this.getId() + "\n" +
@@ -88,9 +85,6 @@ public class Matches {
 				"awayTeam: \t" + this.getAwayTeam();
 		return result;
 	}
-	
-	
-	
 }
 	
 	

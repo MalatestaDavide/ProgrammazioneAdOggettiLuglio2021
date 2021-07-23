@@ -1,7 +1,5 @@
 package it.univpm.FootballApp.Model;
 
-import ch.qos.logback.core.joran.conditional.IfAction;
-
 /**
  * This class give the names of all teams.
  * @author Vascello Francesco Pio
