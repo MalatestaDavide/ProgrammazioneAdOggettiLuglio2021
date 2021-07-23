@@ -126,8 +126,9 @@ Un esempio di richiesta è il seguente : ```https://localhost:8080/competitions`
 ## Stats e Filtri <a name="statsefiltri"></a>
 | Tipo         | Statistiche   | Descrizione   |
 | ------------ |---------------|---------------|
-|  ```GET```   |               |               |
-|              |               |               |
+|  ```GET```   | numberOfTeams |Ritorna il numero di teams per ogni competizione e la loro media |
+|  ```GET```   | savedSeason   | Ritorna il numero di stagioni salvate per competizione e la loro media |
+|  ```GET```   | duration      | Ritorna la durata delle stagioni relative alle competizioni |    
   
 | Tipo         | Filtri        | Descrizione   |
 | ------------ |---------------|---------------|
