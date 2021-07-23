@@ -65,6 +65,11 @@
 |   ```GET```  | /competitions | Questa richiesta mi restituisce i dettagli delle 3 competizioni scelte.|
 |   ```GET```  | /competitions/{id}|Ponendo al posto di id SA, PD o L1, ottengo i dettagli di 1 singola competizione.|
 |   ```GET```  | /matches/{id}|Ponendo al posto di id SA, PD o L1, ottengo le partite di 1 singola competizione.|
+|   ```GET```  | /matches/{id}|Ponendo al posto di id SA, PD o L1, ottengo le partite di 1 singola competizione.|                                                                 |   ```GET```  | /numberOfTeams|Restituisce il numero medio minimo e massimo delle squadre.|
+|   ```GET```  | /savedSeason |Restituisce il numero delle stagioni salvate per ogi competizione e la media tra di esse.|
+|   ```GET```  | /duration    |Restituisce la durata delle stagioni delle 3 competizioni.|
+    
+    
 ***
 
 ### Esempi <a name="esempi"></a>
