@@ -12,5 +12,7 @@ public class FootballAppApplication {
 
 	public static void main(String[] args) throws FileNotFoundException {
 		SpringApplication.run(FootballAppApplication.class, args);
+		//DataBase dataBase = new DataBase();
+		//dataBase.matchesSA();
 	}
 }

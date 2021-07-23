@@ -41,31 +41,31 @@ public class Controller  {
 	 * @param IdCompetition
 	 * @return Competition object
 	 */
-	@RequestMapping(value = "/competitions/SA", method = RequestMethod.GET)
+	@RequestMapping(value = "/competitionSA", method = RequestMethod.GET)
 	@ResponseBody
 	
-	public ResponseEntity<Object> getCompetitionsSA() throws IOException {
+	public ResponseEntity<Object> getCompetitionSA() throws IOException {
 	   DataBase data = new DataBase();
-	   return new ResponseEntity<Object>(data.competitionsSA(), HttpStatus.OK);
+	   return new ResponseEntity<Object>(data.competitionSA(), HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/competitions/L1", method = RequestMethod.GET)
+	@RequestMapping(value = "/competitionL1", method = RequestMethod.GET)
 	@ResponseBody
 	public ResponseEntity<Object> getCompetitionsL1() throws IOException {
 	   DataBase data = new DataBase();
-	   return new ResponseEntity<Object>(data.competitionsL1(), HttpStatus.OK);
+	   return new ResponseEntity<Object>(data.competitionL1(), HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/competitions/PD", method = RequestMethod.GET)
+	@RequestMapping(value = "/competitionPD", method = RequestMethod.GET)
 	@ResponseBody
-	public ResponseEntity<Object> getCompetitionsPD() throws IOException {
+	public ResponseEntity<Object> getCompetitionPD() throws IOException {
 	   DataBase data = new DataBase();
-	   return new ResponseEntity<Object>(data.competitionsPD(), HttpStatus.OK);
+	   return new ResponseEntity<Object>(data.competitionPD(), HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/matchesSA2018", method = RequestMethod.GET)
+	@RequestMapping(value = "/matchesSA2020", method = RequestMethod.GET)
 	@ResponseBody
-	public ResponseEntity<Object> getmatchesSA2018() throws IOException {
+	public ResponseEntity<Object> getmatchesSA2020() throws IOException {
 	   DataBase data = new DataBase();
 	   return new ResponseEntity<Object>(data.matchesSA(), HttpStatus.OK);
 	}
