@@ -226,12 +226,16 @@ public class DataBase  {
 				return data;
 		    }   
 	    	
-	    	String[] names = new String[]{"AC Milan", "ACF Fiorentina", "AS Roma", "Atalanta BC",
+	    	//namesSerieA
+	    	String[] namesSA = new String[]{"AC Milan", "ACF Fiorentina", "AS Roma", "Atalanta BC",
 					"Bologna FC 1909", "Cagliari Calcio", "Genoa CFC", "FC Internazionale Milano", "Juventus FC", "SS Lazio", "Parma Calcio 1913",
 					"SSC Napoli", "Udinese Calcio", "Hellas Verona FC", "US Sassuolo Calcio",
 					 "FC Crotone", "Spezia Calcio", "UC Sampdoria", "Torino FC", "Benevento Calcio"};
 
 	    	int[] points = new int[20];
+	    	
+	    	int[] pointsAway = new int[20];
+			int[] pointsHome = new int[20];
 	    	
 	    	public ArrayList<Matches> matchesSA() {
 		    	ArrayList<Matches> listMatches = new ArrayList<>();
@@ -240,18 +244,17 @@ public class DataBase  {
 		    	   for (int i = 0; i < data.length; i++) {
 		    		   listMatches.add(data[i]);
 		    		   
-		    		   Matches m = new Matches();
-		    		   String winner = m.getScore().getWinner();
-		    		   String hometeam = m.getHomeTeam().getName();
-		    		   String awayteam =m.getAwayTeam().getName();
+		    		   String winner = data[i].getScore().getWinner();
+		    		   String hometeam = data[i].getHomeTeam().getName();
+		    		   String awayteam = data[i].getAwayTeam().getName();
 		    		   
 		    		   for ( int l = 0; l < listMatches.size()  ; l++) {
 		    			   
 		    		   		for ( int p = 0; p < points.length; p++) {
 
-		    		    		   for(int n = 0; n < names.length; n++) {
+		    		    		   for(int n = 0; n < namesSA.length; n++) {
 
-		    			    			 if (winner.equals(hometeam) && (hometeam.equals(names[n])) || (winner.equals(awayteam)) && (awayteam.equals(names[n]))) {
+		    			    			 if (winner.equals(hometeam) && (hometeam.equals(namesSA[n])) || (winner.equals(awayteam)) && (awayteam.equals(namesSA[n]))) {
 		    			    				 points[p] = points[p] + 3;
 		    			    			 }
 		    				    			   else if (winner=="DRAW") {
@@ -261,6 +264,26 @@ public class DataBase  {
 		    											points[p] = points[p] + 0;
 		    						    			   }
 
+		    			    			 //pointsHome
+		    			    			 if (winner.equals(hometeam) && (hometeam.equals(namesSA[n]))) {
+		    			    				 pointsHome[p] = pointsHome[p] + 3;
+		    			    			 }
+		    				    			   else if (winner=="DRAW") {
+		    				    				   pointsHome[p] = pointsHome[p] + 1;
+		    				    			   }
+		    						    			   else {
+		    											pointsHome[p] = pointsHome[p] + 0;
+		    						    			   }
+		    			    			//pointsAway 
+		    			    			 if (winner.equals(awayteam) && (awayteam.equals(namesSA[n]))) {
+		    			    				 pointsAway[p] = pointsAway[p] + 3;
+		    			    			 }
+		    				    			   else if (winner=="DRAW") {
+		    				    				   pointsAway[p] = pointsAway[p] + 1;
+		    				    			   }
+		    						    			   else {
+		    											pointsAway[p] = pointsAway[p] + 0;
+		    						    			   }
 		    	 		     		}
 		    		   		}
 		    		   }
@@ -270,15 +293,78 @@ public class DataBase  {
 		    	   	return listMatches;
 				}	
 	    	
+	    	public int[] getPoints() {
+				return points;
+				
+			} 
+	    
+	    	
+	    	//namesPrimeraDivison
+	    	String[] namesPD = new String[]{"Athletic Club", "Club Atlético de Madrid", "CA Osasuna",
+					"FC Barcelona", "Getafe CF", "Granada CF", "Real Madrid CF", "Levante UD", "Real Betis Balompié", "Real Sociedad de Fútbol",
+					"Villarreal CF", "Valencia CF", "Real Valladolid CF", "Deportivo Alavés",
+					"Cádiz CF", "SD Eibar", "Elche CF", "SD Huesca", "RC Celta de Vigo", "Sevilla FC"};
+	    	
 	    	public ArrayList<Matches> matchesPD() {
 		    	ArrayList<Matches> listMatches = new ArrayList<>();
 		    	Matches[] data = new Matches[0];
 		    	data = buff2();
 		    	   for (int i = 0; i < data.length; i++) {
 		    		   listMatches.add(data[i]);
-		    	   }
+		    		   
+		    		   String winner = data[i].getScore().getWinner();
+		    		   String hometeam = data[i].getHomeTeam().getName();
+		    		   String awayteam = data[i].getAwayTeam().getName();
+		    		   
+		    		   for ( int l = 0; l < listMatches.size()  ; l++) {
+		    			   
+		    		   		for ( int p = 0; p < points.length; p++) {
+
+		    		    		   for(int n = 0; n < namesPD.length; n++) {
+
+		    			    			 if (winner.equals(hometeam) && (hometeam.equals(namesPD[n])) || (winner.equals(awayteam)) && (awayteam.equals(namesPD[n]))) {
+		    			    				 points[p] = points[p] + 3;
+		    			    			 }
+		    				    			   else if (winner=="DRAW") {
+		    				    				   points[p] = points[p] + 1;
+		    				    			   }
+		    						    			   else {
+		    											points[p] = points[p] + 0;
+		    						    			   }
+		    			    	
+		    			    			 //pointsHome
+		    			    			 if (winner.equals(hometeam) && (hometeam.equals(namesPD[n]))) {
+		    			    				 pointsHome[p] = pointsHome[p] + 3;
+		    			    			 }
+		    				    			   else if (winner=="DRAW") {
+		    				    				   pointsHome[p] = pointsHome[p] + 1;
+		    				    			   }
+		    						    			   else {
+		    											pointsHome[p] = pointsHome[p] + 0;
+		    						    			   }
+		    			    			//pointsAway 
+		    			    			 if (winner.equals(awayteam) && (awayteam.equals(namesPD[n]))) {
+		    			    				 pointsAway[p] = pointsAway[p] + 3;
+		    			    			 }
+		    				    			   else if (winner=="DRAW") {
+		    				    				   pointsAway[p] = pointsAway[p] + 1;
+		    				    			   }
+		    						    			   else {
+		    											pointsAway[p] = pointsAway[p] + 0;
+		    						    			   }
+		    	 		     		}
+		    		   		}
+		    		   }
+		    		   
+		    	   }  
+		    	   	System.out.println(points);
 		    	   	return listMatches;
 		    	 }
+	    	//namesLigue1
+	    	String[] namesL1 = new String[]{"Stade Brestois 29", "Olympique de Marseille", "Montpellier HSC", "Lille OSC", 
+	    			"OGC Nice", "Olympique Lyonnais", "Paris Saint-Germain FC", "FC Lorient", "FC Girondins de Bordeaux", "AS Saint-Étienne", 
+	    			"Dijon Football Côte d'Or", "Stade Rennais FC 1901", "Angers SCO", "FC Nantes", "FC Metz",
+	    			"Racing Club de Lens", "Stade de Reims", "AS Monaco FC", "Nîmes Olympique", "RC Strasbourg Alsace"};
 	    	
 	    	public ArrayList<Matches> matchesL1() {
 		    	ArrayList<Matches> listMatches = new ArrayList<>();
@@ -286,7 +372,53 @@ public class DataBase  {
 		    	data = buff3();
 		    	   for (int i = 0; i < data.length; i++) {
 		    		   listMatches.add(data[i]);
-		    	   }
+		    		   
+		    		   String winner = data[i].getScore().getWinner();
+		    		   String hometeam = data[i].getHomeTeam().getName();
+		    		   String awayteam = data[i].getAwayTeam().getName();
+		    		   
+		    		   for ( int l = 0; l < listMatches.size()  ; l++) {
+		    			   
+		    		   		for ( int p = 0; p < points.length; p++) {
+
+		    		    		   for(int n = 0; n < namesL1.length; n++) {
+
+		    			    			 if (winner.equals(hometeam) && (hometeam.equals(namesL1[n])) || (winner.equals(awayteam)) && (awayteam.equals(namesL1[n]))) {
+		    			    				 points[p] = points[p] + 3;
+		    			    			 }
+		    				    			   else if (winner=="DRAW") {
+		    				    				   points[p] = points[p] + 1;
+		    				    			   }
+		    						    			   else {
+		    											points[p] = points[p] + 0;
+		    						    			   }
+		    			    	
+		    			    			 //pointsHome
+		    			    			 if (winner.equals(hometeam) && (hometeam.equals(namesL1[n]))) {
+		    			    				 pointsHome[p] = pointsHome[p] + 3;
+		    			    			 }
+		    				    			   else if (winner=="DRAW") {
+		    				    				   pointsHome[p] = pointsHome[p] + 1;
+		    				    			   }
+		    						    			   else {
+		    											pointsHome[p] = pointsHome[p] + 0;
+		    						    			   }
+		    			    			//pointsAway 
+		    			    			 if (winner.equals(awayteam) && (awayteam.equals(namesL1[n]))) {
+		    			    				 pointsAway[p] = pointsAway[p] + 3;
+		    			    			 }
+		    				    			   else if (winner=="DRAW") {
+		    				    				   pointsAway[p] = pointsAway[p] + 1;
+		    				    			   }
+		    						    			   else {
+		    											pointsAway[p] = pointsAway[p] + 0;
+		    						    			   }
+		    	 		     		}
+		    		   		}
+		    		   }
+		    		   
+		    	   }  
+		    	   //System.out.println(points);
 		    	   	return listMatches;
 		    	 }
 }

@@ -99,6 +99,16 @@ public class Controller  {
 	  public ResponseEntity<Object> getduration() throws IOException {
 	     return new ResponseEntity<Object>(Stats.duration(), HttpStatus.OK);
 	 } 
+	 
+	 /**
+	  * Get saved Seasons for all Competitions.
+	  * @param savedSeasons
+	  */
+	 @RequestMapping(value = "/avgPointsSA", method = RequestMethod.GET)
+	 @ResponseBody
+	  public ResponseEntity<Object> getAvgPointsSA() throws IOException {
+	     return new ResponseEntity<Object>(Stats.avgPointsDay(), HttpStatus.OK);
+	 } 
 }
 
 	
