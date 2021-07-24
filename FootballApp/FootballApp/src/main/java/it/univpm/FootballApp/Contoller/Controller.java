@@ -63,11 +63,30 @@ public class Controller  {
 	   return new ResponseEntity<Object>(data.competitionPD(), HttpStatus.OK);
 	}
 	
+	/**
+	 * Get list of matches for each competition
+	 * @return list of matches
+	 * @throws IOException
+	 */
 	@RequestMapping(value = "/matchesSA2020", method = RequestMethod.GET)
 	@ResponseBody
 	public ResponseEntity<Object> getmatchesSA2020() throws IOException {
 	   DataBase data = new DataBase();
 	   return new ResponseEntity<Object>(data.matchesSA(), HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/matchesPD2020", method = RequestMethod.GET)
+	@ResponseBody
+	public ResponseEntity<Object> getmatchesPD2020() throws IOException {
+	   DataBase data = new DataBase();
+	   return new ResponseEntity<Object>(data.matchesPD(), HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/matchesL12020", method = RequestMethod.GET)
+	@ResponseBody
+	public ResponseEntity<Object> getmatchesL12020() throws IOException {
+	   DataBase data = new DataBase();
+	   return new ResponseEntity<Object>(data.matchesL1(), HttpStatus.OK);
 	}
 	
 	/**
@@ -92,7 +111,7 @@ public class Controller  {
 	 
 	 /**
 	  * Get saved Seasons for all Competitions.
-	  * @param savedSeasons
+	  * @param duration
 	  */
 	 @RequestMapping(value = "/duration", method = RequestMethod.GET)
 	 @ResponseBody
@@ -102,7 +121,7 @@ public class Controller  {
 	 
 	 /**
 	  * Get saved Seasons for all Competitions.
-	  * @param savedSeasons
+	  * @param avgPoints
 	  */
 	 @RequestMapping(value = "/avgPointsSA", method = RequestMethod.GET)
 	 @ResponseBody

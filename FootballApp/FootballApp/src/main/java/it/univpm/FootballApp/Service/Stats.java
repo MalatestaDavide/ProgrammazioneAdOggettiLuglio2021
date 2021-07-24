@@ -118,9 +118,9 @@ public class Stats {
         Period periodL1 = dur.getTimeL1();
    
     HashMap<String, Period> statMap = new HashMap<String, Period>();
-    statMap.put("Durata della Serie A in mesi e giorni", periodSA );
-    statMap.put("Durata della Primera division in mesi e giorni", periodPD );
-    statMap.put("Durata della Legue 1 in mesi e giorni", periodL1 );
+    statMap.put("Durata della Serie A in mesi(M) e giorni(D)", periodSA );
+    statMap.put("Durata della Primera division in mesi(M) e giorni(D)", periodPD );
+    statMap.put("Durata della Legue 1 in mesi(M) e giorni(D)", periodL1 );
     return statMap;
     }
 
@@ -130,12 +130,12 @@ public class Stats {
 	public static HashMap<String, int[]> avgPointsDay() {
 		DataBase d = new DataBase();
 		int[] points = d.getPoints();
-   
-       
+		
+
     HashMap<String, int[]> statMap = new HashMap<String, int[]>();
-    for (int i=0; i < points.length; i++ ) {
-	    statMap.put("Media dei punti/giornata per il Milan",points);
-    }
+    
+	    statMap.put("Media dei punti/giornata ", d.getPoints());
+    
     return statMap; 
     
     } 
