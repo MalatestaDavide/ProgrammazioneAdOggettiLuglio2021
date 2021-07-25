@@ -124,20 +124,50 @@ public class Stats {
     return statMap;
     }
 
-	
-	//Hashmap that returns the points of SA in the 2020 season.
-	 
-	public static HashMap<String, int[]> avgPointsDay() {
-		DataBase d = new DataBase();
-		int[] points = d.getPoints();
-		
+	/**
+	 * //Hashmap that returns the points of SA in the 2020 season.
+	 * @return statMap
+	 */ 
+	public static HashMap<String, float[]> avgPointsDaySA() {
+	    DataBase d = new DataBase();
+	    d.setPointsSA();
 
-    HashMap<String, int[]> statMap = new HashMap<String, int[]>();
-    
-	    statMap.put("Media dei punti/giornata ", d.getPoints());
-    
-    return statMap; 
-    
-    } 
+	    HashMap<String, float[]> statMap = new HashMap<String, float[]>();
+	    statMap.put("Media dei punti/giornata Serie A ", d.getPointsSA());
+	    statMap.put("Media dei punti/giornata Serie A considerando le partite in casa ", d.getPointsSAhome());
+	    statMap.put("Media dei punti/giornata Serie A considerando le partite fuori casa ", d.getPointsSAaway());
+	    return statMap;
+	}
+	
+	/**
+	 * //Hashmap that returns the points of PD in the 2020 season.
+	 * @return statMap
+	 */ 
+	public static HashMap<String, float[]> avgPointsDayPD() {
+	    DataBase d = new DataBase();
+	    d.setPointsPD();
+
+	    HashMap<String, float[]> statMap = new HashMap<String, float[]>();
+	    statMap.put("Media dei punti/giornata Primera Division ", d.getPointsPD());
+	    statMap.put("Media dei punti/giornata Primera Division considerando le partite in casa ", d.getPointsPDhome());
+	    statMap.put("Media dei punti/giornata Primera Division considerando le partite fuori casa ", d.getPointsPDaway());
+	    return statMap;
+	}
+	
+	/**
+	 * //Hashmap that returns the points of L1 in the 2020 season.
+	 * @return statMap
+	 */
+	public static HashMap<String, float[]> avgPointsDayL1() {
+	    DataBase d = new DataBase();
+	    d.setPointsL1();
+
+	    HashMap<String, float[]> statMap = new HashMap<String, float[]>();
+	    statMap.put("Media dei punti/giornata Ligue 1 ", d.getPointsL1());
+	    statMap.put("Media dei punti/giornata Ligue 1 considerando le partite in casa ", d.getPointsL1home());
+	    statMap.put("Media dei punti/giornata Ligue 1 considerando le partite fuori casa ", d.getPointsL1away());
+	    return statMap;
+	}
+	
 	
 }

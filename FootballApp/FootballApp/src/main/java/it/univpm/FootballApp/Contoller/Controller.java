@@ -120,14 +120,26 @@ public class Controller  {
 	 } 
 	 
 	 /**
-	  * Get saved Seasons for all Competitions.
+	  * Get average points/day for each competition
 	  * @param avgPoints
 	  */
 	 @RequestMapping(value = "/avgPointsSA", method = RequestMethod.GET)
 	 @ResponseBody
 	  public ResponseEntity<Object> getAvgPointsSA() throws IOException {
-	     return new ResponseEntity<Object>(Stats.avgPointsDay(), HttpStatus.OK);
-	 } 
+	     return new ResponseEntity<Object>(Stats.avgPointsDaySA(), HttpStatus.OK);
+	 }
+	 
+	 @RequestMapping(value = "/avgPointsPD", method = RequestMethod.GET)
+	 @ResponseBody
+	  public ResponseEntity<Object> getAvgPointsPD() throws IOException {
+	     return new ResponseEntity<Object>(Stats.avgPointsDayPD(), HttpStatus.OK);
+	 }
+	 
+	 @RequestMapping(value = "/avgPointsL1", method = RequestMethod.GET)
+	 @ResponseBody
+	  public ResponseEntity<Object> getAvgPointsL1() throws IOException {
+	     return new ResponseEntity<Object>(Stats.avgPointsDayL1(), HttpStatus.OK);
+	 }
 }
 
 	

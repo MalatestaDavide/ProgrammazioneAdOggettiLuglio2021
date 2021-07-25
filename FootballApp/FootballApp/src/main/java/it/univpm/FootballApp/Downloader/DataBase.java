@@ -3,21 +3,10 @@ package it.univpm.FootballApp.Downloader;
 import java.io.IOException;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 
-import javax.xml.stream.events.Namespace;
-
-import org.apache.catalina.filters.AddDefaultCharsetFilter;
-import org.apache.tomcat.websocket.pojo.PojoEndpointServer;
-
-import ch.qos.logback.core.joran.conditional.IfAction;
 import it.univpm.FootballApp.Model.Competitions;
 import it.univpm.FootballApp.Model.Matches;
-import it.univpm.FootballApp.Model.Score;
-import it.univpm.FootballApp.Model.awayTeam;
-import it.univpm.FootballApp.Model.homeTeam;
+
 /**
  * Class that gets info from the API.
  * @author Vascello Francesco Pio
@@ -237,68 +226,95 @@ public class DataBase  {
 	    	int[] pointsAway = new int[20];
 			int[] pointsHome = new int[20];
 	    	
-	    	public ArrayList<Matches> matchesSA() {
-		    	ArrayList<Matches> listMatches = new ArrayList<>();
-		    	Matches[] data = new Matches[0];
-		    	data = buff1();
-		    	   for (int i = 0; i < data.length; i++) {
-		    		   listMatches.add(data[i]);
-		    		   
-		    		   String winner = data[i].getScore().getWinner();
-		    		   String hometeam = data[i].getHomeTeam().getName();
-		    		   String awayteam = data[i].getAwayTeam().getName();
-		    		   
-		    		   for ( int l = 0; l < listMatches.size()  ; l++) {
-		    			   
-		    		   		for ( int p = 0; p < points.length; p++) {
-
-		    		    		   for(int n = 0; n < namesSA.length; n++) {
-
-		    			    			 if (winner.equals(hometeam) && (hometeam.equals(namesSA[n])) || (winner.equals(awayteam)) && (awayteam.equals(namesSA[n]))) {
-		    			    				 points[p] = points[p] + 3;
-		    			    			 }
-		    				    			   else if (winner=="DRAW") {
-		    				    				   points[p] = points[p] + 1;
-		    				    			   }
-		    						    			   else {
-		    											points[p] = points[p] + 0;
-		    						    			   }
-
-		    			    			 //pointsHome
-		    			    			 if (winner.equals(hometeam) && (hometeam.equals(namesSA[n]))) {
-		    			    				 pointsHome[p] = pointsHome[p] + 3;
-		    			    			 }
-		    				    			   else if (winner=="DRAW") {
-		    				    				   pointsHome[p] = pointsHome[p] + 1;
-		    				    			   }
-		    						    			   else {
-		    											pointsHome[p] = pointsHome[p] + 0;
-		    						    			   }
-		    			    			//pointsAway 
-		    			    			 if (winner.equals(awayteam) && (awayteam.equals(namesSA[n]))) {
-		    			    				 pointsAway[p] = pointsAway[p] + 3;
-		    			    			 }
-		    				    			   else if (winner=="DRAW") {
-		    				    				   pointsAway[p] = pointsAway[p] + 1;
-		    				    			   }
-		    						    			   else {
-		    											pointsAway[p] = pointsAway[p] + 0;
-		    						    			   }
-		    	 		     		}
-		    		   		}
-		    		   }
-		    		   
-		    	   }  
-		    	   //System.out.println(points);
-		    	   	return listMatches;
-				}	
-	    	
-	    	public int[] getPoints() {
-				return points;
-				
-			} 
-	    
-	    	
+			public ArrayList<Matches> matchesSA() {
+			       ArrayList<Matches> listMatches = new ArrayList<>();
+			       Matches[] data = new Matches[0];
+			       data = buff1();
+			          for (int i = 0; i < data.length; i++) {
+			         listMatches.add(data[i]);
+			      }
+			   return listMatches;
+			   }
+			
+			public void setPointsSA () {
+			      ArrayList<Matches> listMatches = new ArrayList<>();
+			      listMatches = matchesSA();
+			      for ( int l = 0; l < listMatches.size()  ; l++) {
+			         String winner = listMatches.get(l).getScore().getWinner();
+			         String hometeam = listMatches.get(l).getHomeTeam().getName();
+			         String awayteam = listMatches.get(l).getAwayTeam().getName();
+			            int homeIndex = -1;
+			            int awayIndex = -1;
+			            for(int n = 0; n < namesSA.length; n++) {
+			               if (winner.equals("HOME_TEAM") && hometeam.equals(namesSA[n])) {
+			                  points[n] = points[n] + 3;
+			               }
+			               if (winner.equals("AWAY_TEAM") && awayteam.equals(namesSA[n])) {
+			                  points[n] = points[n] + 3;
+			               }
+			               if (hometeam.equals(namesSA[n])) {
+			                  homeIndex = n;
+			               }
+			               if (awayteam.equals(namesSA[n])) {
+			                  awayIndex = n;
+			               }
+			               
+			               //pointsHome
+			               if (winner.equals("HOME_TEAM") && (hometeam.equals(namesSA[n]))) {
+			                  pointsHome[n] = pointsHome[n] + 3;
+			               }
+			               else if (winner=="DRAW") {
+			                  pointsHome[n] = pointsHome[n] + 1;
+			               }
+			               else {
+			                  pointsHome[n] = pointsHome[n] + 0;
+			               }
+			               
+			               //pointsAway
+			               if (winner.equals("AWAY_TEAM") && (awayteam.equals(namesSA[n]))) {
+			                  pointsAway[n] = pointsAway[n] + 3;
+			               }
+			               else if (winner=="DRAW") {
+			                  pointsAway[n] = pointsAway[n] + 1;
+			               }
+			               else {
+			                  pointsAway[n] = pointsAway[n] + 0;
+			               }
+			            }
+			            if (winner == "DRAW") {
+			               points[homeIndex] ++;
+			               points[awayIndex] ++;
+			            }
+			      }
+			   }
+			   
+			   public float[] getPointsSA() {
+			      float[] points_mean = new float[20];
+			      for (int i = 0; i < points_mean.length; i++)
+			   {
+			      points_mean[i] = points[i]/38;
+			   }
+			   return points_mean; 
+			}
+			   
+			   public float[] getPointsSAhome() {
+				      float[] points_mean = new float[20];
+				      for (int i = 0; i < points_mean.length; i++)
+				   {
+				      points_mean[i] = pointsHome[i]/38;
+				   }
+				   return points_mean; 
+				} 
+			   
+			   public float[] getPointsSAaway() {
+				      float[] points_mean = new float[20];
+				      for (int i = 0; i < points_mean.length; i++)
+				   {
+				      points_mean[i] = pointsAway[i]/38;
+				   }
+				   return points_mean; 
+				}
+			    	
 	    	//namesPrimeraDivison
 	    	String[] namesPD = new String[]{"Athletic Club", "Club Atlético de Madrid", "CA Osasuna",
 					"FC Barcelona", "Getafe CF", "Granada CF", "Real Madrid CF", "Levante UD", "Real Betis Balompié", "Real Sociedad de Fútbol",
@@ -311,55 +327,89 @@ public class DataBase  {
 		    	data = buff2();
 		    	   for (int i = 0; i < data.length; i++) {
 		    		   listMatches.add(data[i]);
-		    		   
-		    		   String winner = data[i].getScore().getWinner();
-		    		   String hometeam = data[i].getHomeTeam().getName();
-		    		   String awayteam = data[i].getAwayTeam().getName();
-		    		   
-		    		   for ( int l = 0; l < listMatches.size()  ; l++) {
-		    			   
-		    		   		for ( int p = 0; p < points.length; p++) {
-
-		    		    		   for(int n = 0; n < namesPD.length; n++) {
-
-		    			    			 if (winner.equals(hometeam) && (hometeam.equals(namesPD[n])) || (winner.equals(awayteam)) && (awayteam.equals(namesPD[n]))) {
-		    			    				 points[p] = points[p] + 3;
-		    			    			 }
-		    				    			   else if (winner=="DRAW") {
-		    				    				   points[p] = points[p] + 1;
-		    				    			   }
-		    						    			   else {
-		    											points[p] = points[p] + 0;
-		    						    			   }
-		    			    	
-		    			    			 //pointsHome
-		    			    			 if (winner.equals(hometeam) && (hometeam.equals(namesPD[n]))) {
-		    			    				 pointsHome[p] = pointsHome[p] + 3;
-		    			    			 }
-		    				    			   else if (winner=="DRAW") {
-		    				    				   pointsHome[p] = pointsHome[p] + 1;
-		    				    			   }
-		    						    			   else {
-		    											pointsHome[p] = pointsHome[p] + 0;
-		    						    			   }
-		    			    			//pointsAway 
-		    			    			 if (winner.equals(awayteam) && (awayteam.equals(namesPD[n]))) {
-		    			    				 pointsAway[p] = pointsAway[p] + 3;
-		    			    			 }
-		    				    			   else if (winner=="DRAW") {
-		    				    				   pointsAway[p] = pointsAway[p] + 1;
-		    				    			   }
-		    						    			   else {
-		    											pointsAway[p] = pointsAway[p] + 0;
-		    						    			   }
-		    	 		     		}
-		    		   		}
-		    		   }
-		    		   
-		    	   }  
-		    	   	System.out.println(points);
-		    	   	return listMatches;
-		    	 }
+		    	   	}
+		    	   return listMatches; 
+	    	} 
+	    	
+	    	public void setPointsPD () {
+			      ArrayList<Matches> listMatches = new ArrayList<>();
+			      listMatches = matchesPD();
+			      for ( int l = 0; l < listMatches.size()  ; l++) {
+			         String winner = listMatches.get(l).getScore().getWinner();
+			         String hometeam = listMatches.get(l).getHomeTeam().getName();
+			         String awayteam = listMatches.get(l).getAwayTeam().getName();
+			            int homeIndex = -1;
+			            int awayIndex = -1;
+			            for(int n = 0; n < namesPD.length; n++) {
+			               if (winner.equals("HOME_TEAM") && hometeam.equals(namesPD[n])) {
+			                  points[n] = points[n] + 3;
+			               }
+			               if (winner.equals("AWAY_TEAM") && awayteam.equals(namesPD[n])) {
+			                  points[n] = points[n] + 3;
+			               }
+			               if (hometeam.equals(namesPD[n])) {
+			                  homeIndex = n;
+			               }
+			               if (awayteam.equals(namesPD[n])) {
+			                  awayIndex = n;
+			               }
+			               
+			               //pointsHome
+			               if (winner.equals("HOME_TEAM") && (hometeam.equals(namesPD[n]))) {
+			                  pointsHome[n] = pointsHome[n] + 3;
+			               }
+			               else if (winner=="DRAW") {
+			                  pointsHome[n] = pointsHome[n] + 1;
+			               }
+			               else {
+			                  pointsHome[n] = pointsHome[n] + 0;
+			               }
+			               
+			               //pointsAway
+			               if (winner.equals("AWAY_TEAM") && (awayteam.equals(namesPD[n]))) {
+			                  pointsAway[n] = pointsAway[n] + 3;
+			               }
+			               else if (winner=="DRAW") {
+			                  pointsAway[n] = pointsAway[n] + 1;
+			               }
+			               else {
+			                  pointsAway[n] = pointsAway[n] + 0;
+			               }
+			            }
+			            if (winner == "DRAW") {
+			               points[homeIndex] ++;
+			               points[awayIndex] ++;
+			            }
+			      }
+			   }
+			   
+			   public float[] getPointsPD() {
+			      float[] points_mean = new float[20];
+			      for (int i = 0; i < points_mean.length; i++)
+			   {
+			      points_mean[i] = points[i]/38;
+			   }
+			   return points_mean; 
+			}
+			   
+			   public float[] getPointsPDhome() {
+				      float[] points_mean = new float[20];
+				      for (int i = 0; i < points_mean.length; i++)
+				   {
+				      points_mean[i] = pointsHome[i]/38;
+				   }
+				   return points_mean; 
+				} 
+			   
+			   public float[] getPointsPDaway() {
+				      float[] points_mean = new float[20];
+				      for (int i = 0; i < points_mean.length; i++)
+				   {
+				      points_mean[i] = pointsAway[i]/38;
+				   }
+				   return points_mean; 
+				}
+	    	
 	    	//namesLigue1
 	    	String[] namesL1 = new String[]{"Stade Brestois 29", "Olympique de Marseille", "Montpellier HSC", "Lille OSC", 
 	    			"OGC Nice", "Olympique Lyonnais", "Paris Saint-Germain FC", "FC Lorient", "FC Girondins de Bordeaux", "AS Saint-Étienne", 
@@ -372,53 +422,86 @@ public class DataBase  {
 		    	data = buff3();
 		    	   for (int i = 0; i < data.length; i++) {
 		    		   listMatches.add(data[i]);
-		    		   
-		    		   String winner = data[i].getScore().getWinner();
-		    		   String hometeam = data[i].getHomeTeam().getName();
-		    		   String awayteam = data[i].getAwayTeam().getName();
-		    		   
-		    		   for ( int l = 0; l < listMatches.size()  ; l++) {
-		    			   
-		    		   		for ( int p = 0; p < points.length; p++) {
-
-		    		    		   for(int n = 0; n < namesL1.length; n++) {
-
-		    			    			 if (winner.equals(hometeam) && (hometeam.equals(namesL1[n])) || (winner.equals(awayteam)) && (awayteam.equals(namesL1[n]))) {
-		    			    				 points[p] = points[p] + 3;
-		    			    			 }
-		    				    			   else if (winner=="DRAW") {
-		    				    				   points[p] = points[p] + 1;
-		    				    			   }
-		    						    			   else {
-		    											points[p] = points[p] + 0;
-		    						    			   }
-		    			    	
-		    			    			 //pointsHome
-		    			    			 if (winner.equals(hometeam) && (hometeam.equals(namesL1[n]))) {
-		    			    				 pointsHome[p] = pointsHome[p] + 3;
-		    			    			 }
-		    				    			   else if (winner=="DRAW") {
-		    				    				   pointsHome[p] = pointsHome[p] + 1;
-		    				    			   }
-		    						    			   else {
-		    											pointsHome[p] = pointsHome[p] + 0;
-		    						    			   }
-		    			    			//pointsAway 
-		    			    			 if (winner.equals(awayteam) && (awayteam.equals(namesL1[n]))) {
-		    			    				 pointsAway[p] = pointsAway[p] + 3;
-		    			    			 }
-		    				    			   else if (winner=="DRAW") {
-		    				    				   pointsAway[p] = pointsAway[p] + 1;
-		    				    			   }
-		    						    			   else {
-		    											pointsAway[p] = pointsAway[p] + 0;
-		    						    			   }
-		    	 		     		}
-		    		   		}
 		    		   }
-		    		   
-		    	   }  
-		    	   //System.out.println(points);
 		    	   	return listMatches;
-		    	 }
+	    	}
+	    	
+	    	public void setPointsL1 () {
+			      ArrayList<Matches> listMatches = new ArrayList<>();
+			      listMatches = matchesL1();
+			      for ( int l = 0; l < listMatches.size()  ; l++) {
+			         String winner = listMatches.get(l).getScore().getWinner();
+			         String hometeam = listMatches.get(l).getHomeTeam().getName();
+			         String awayteam = listMatches.get(l).getAwayTeam().getName();
+			            int homeIndex = -1;
+			            int awayIndex = -1;
+			            for(int n = 0; n < namesSA.length; n++) {
+			               if (winner.equals("HOME_TEAM") && hometeam.equals(namesL1[n])) {
+			                  points[n] = points[n] + 3;
+			               }
+			               if (winner.equals("AWAY_TEAM") && awayteam.equals(namesL1[n])) {
+			                  points[n] = points[n] + 3;
+			               }
+			               if (hometeam.equals(namesL1[n])) {
+			                  homeIndex = n;
+			               }
+			               if (awayteam.equals(namesL1[n])) {
+			                  awayIndex = n;
+			               }
+			               
+			               //pointsHome
+			               if (winner.equals("HOME_TEAM") && (hometeam.equals(namesSA[n]))) {
+			                  pointsHome[n] = pointsHome[n] + 3;
+			               }
+			               else if (winner=="DRAW") {
+			                  pointsHome[n] = pointsHome[n] + 1;
+			               }
+			               else {
+			                  pointsHome[n] = pointsHome[n] + 0;
+			               }
+			               
+			               //pointsAway
+			               if (winner.equals("AWAY_TEAM") && (awayteam.equals(namesL1[n]))) {
+			                  pointsAway[n] = pointsAway[n] + 3;
+			               }
+			               else if (winner=="DRAW") {
+			                  pointsAway[n] = pointsAway[n] + 1;
+			               }
+			               else {
+			                  pointsAway[n] = pointsAway[n] + 0;
+			               }
+			            }
+			            if (winner == "DRAW") {
+			               points[homeIndex] ++;
+			               points[awayIndex] ++;
+			            }
+			      }
+			   }
+			   
+			   public float[] getPointsL1() {
+			      float[] points_mean = new float[20];
+			      for (int i = 0; i < points_mean.length; i++)
+			   {
+			      points_mean[i] = points[i]/38;
+			   }
+			   return points_mean; 
+			} 		
+			 
+			   public float[] getPointsL1home() {
+				      float[] points_mean = new float[20];
+				      for (int i = 0; i < points_mean.length; i++)
+				   {
+				      points_mean[i] = pointsHome[i]/38;
+				   }
+				   return points_mean; 
+				} 
+			   
+			   public float[] getPointsL1away() {
+				      float[] points_mean = new float[20];
+				      for (int i = 0; i < points_mean.length; i++)
+				   {
+				      points_mean[i] = pointsAway[i]/38;
+				   }
+				   return points_mean; 
+				} 
 }
