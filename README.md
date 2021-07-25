@@ -51,7 +51,7 @@ Sono presenti statistiche sul numero di squadre delle varie competizioni, stagio
 |             | Seasons.java    |Contiene le info delle stagioni.|
 |             | singleCompetition.java   |Contiene le info di una competizione scelta.|
 |             | Teams.java        | Contiene le info delle squadre.|
-| Service     | Stats&Filters.java    |Contiene le statistiche e i filtri sulle competizioni.|
+| Service     | Stats.java    |Contiene le statistiche e i filtri sulle competizioni.|
 | Downloader  | Downloader.java |Effettua il download dei dati in una stringa.|
 |             | Url.java     | Gestisce la connessione con l'url API e l'autentificazione con il token.|
 |             | DataBase.java    |Ottiene le info dalle API.|        
@@ -68,7 +68,12 @@ Sono presenti statistiche sul numero di squadre delle varie competizioni, stagio
 |   ```GET```  | /matches{id}2020|Ponendo al posto di id SA, PD o L1, ottengo le partite di 1 singola competizione.|                                                              |   ```GET```  | /numberOfTeams|Restituisce il numero medio minimo e massimo delle squadre.|
 |   ```GET```  | /savedSeason |Restituisce il numero delle stagioni salvate per ogi competizione e la media tra di esse.|
 |   ```GET```  | /duration    |Restituisce la durata delle stagioni delle 3 competizioni.|
-|   ```GET```  | /avgPointsSA    |Restituisce i punti delle squadre della SerieA.|    
+|   ```GET```  | /avgPointsSA    |Restituisce la media dei punti delle squadre della SerieA.|  
+|   ```GET```  | /avgPointsPD    |Restituisce la media dei punti delle squadre della Primera Division.| 
+|   ```GET```  | /avgPointsPD    |Restituisce la media dei punti delle squadre della Ligue 1.| 
+    
+> **Note:** La media dei punti a stagione viene restituita come un array di interi dove a ciascun elemento corrisponde una squadra della competizione in ordine alfabetico.
+    
     
 ***
 
@@ -130,7 +135,7 @@ Un esempio di richiesta è il seguente : ```https://localhost:8080/competitions`
 |  ```GET```   | numberOfTeams |Ritorna il numero di teams per ogni competizione e la loro media |
 |  ```GET```   | savedSeason   | Ritorna il numero di stagioni salvate per competizione e la loro media |
 |  ```GET```   | duration      | Ritorna la durata delle stagioni relative alle competizioni |    
-|  ```GET```   | avgPonts      | Ritorna la media dei punti delle squadre |    
+|  ```GET```   | avgPoints      | Ritorna la media dei punti delle squadre |    
     
 ### Esempi <a name="esempistats"></a>
 Un esempio di statistica è il seguente : ```https://localhost:8080/duration``` 
