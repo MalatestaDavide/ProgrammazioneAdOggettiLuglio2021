@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"it.univpm.FootballApp"}]
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"it.univpm.FootballApp"},{"l":"it.univpm.FootballApp.Contoller"},{"l":"it.univpm.FootballApp.Downloader"},{"l":"it.univpm.FootballApp.Exceptions"},{"l":"it.univpm.FootballApp.Model"},{"l":"it.univpm.FootballApp.Service"}]

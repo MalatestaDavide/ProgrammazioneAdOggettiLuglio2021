@@ -1,1 +1,6 @@
 it.univpm.FootballApp
+it.univpm.FootballApp.Contoller
+it.univpm.FootballApp.Downloader
+it.univpm.FootballApp.Exceptions
+it.univpm.FootballApp.Model
+it.univpm.FootballApp.Service
